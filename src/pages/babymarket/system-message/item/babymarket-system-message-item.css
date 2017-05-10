@@ -1,0 +1,27 @@
+.bmsm-item-root{
+    display: flex;
+    flex-direction: column;
+}
+
+.bmsm-item-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bmsm-item-title{
+    font-size: 15px;
+}
+
+.bmsm-item-time{
+    font-size: 12px;
+    color: #acadaa;
+}
+
+.bmsm-item-des{
+    margin: 0px;
+    padding: 0px;
+
+    font-size: 12px;
+    color: #acadaa;
+}

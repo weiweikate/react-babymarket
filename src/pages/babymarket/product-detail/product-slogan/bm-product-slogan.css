@@ -1,0 +1,7 @@
+.bmps-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 14px;
+    padding-bottom: 12px;
+}

@@ -1,0 +1,13 @@
+.specification-thumb-container {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    height: auto;
+    flex-wrap:wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+
+

@@ -1,0 +1,34 @@
+
+.bmhli-root{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right:10px;
+}
+
+.bmhli-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bmhli-title{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #191919;
+}
+
+.bmhli-right-icon{
+    width: 15px;
+    height: 9px;
+}
+
+.bmhli-content{
+    color: #545454;
+}
+
+.bmhli-content-hidden{
+    display: none;
+}

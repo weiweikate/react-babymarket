@@ -1,0 +1,27 @@
+.bmdyd-product-root{
+    display: flex;
+    flex-direction: row;
+}
+.bmdyd-product-img{
+    display: flex;
+    height: 100px;
+    width: 100px;
+    margin-left: 10px;
+}
+.bmdyd-product-right{
+    display: flex;
+    flex-direction: column;
+}
+.bmdyd-product-title{
+    font-size: 15px;
+    margin: 0px;
+    margin-top: 15px;
+    font-style: normal;
+    color: #1a1c1f;
+}
+.bmdyd-product-des{
+    font-size: 13px;
+    margin: 0px;
+    margin-top: 5px;
+    color: #b1b1b1;
+}

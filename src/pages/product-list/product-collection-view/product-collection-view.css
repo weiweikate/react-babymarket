@@ -1,0 +1,41 @@
+/*搜索结果产品列表展示*/
+
+.s-result-list {
+    padding: 0 20px;
+    margin-bottom: 80px;
+}
+.s-result-list li {
+    width: 50%;
+    float: left;
+    text-align: center;
+    padding: 20px 0 0 0;
+}
+.s-result-list li img {
+    display: block;
+    max-width: 85%;
+    margin: 10px auto;
+}
+.s-result-list li a {
+    color: #494848;
+    font-size: 12px;
+    padding: 0 10px;
+}
+.s-result-list li p {
+    color: #ff0000;
+    font-size: 16px;
+}
+
+/*搜索结果产品列表展示*/
+
+.cover {
+    position: fixed;
+    z-index: 999;
+    background-color: #000;
+    opacity: 0.5;
+    width: 1000px;
+    height: 1000px;
+    top: 120px
+}
+.clear {
+    clear: both;
+}

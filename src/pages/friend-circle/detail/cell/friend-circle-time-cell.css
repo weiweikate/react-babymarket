@@ -1,0 +1,31 @@
+.fc-time{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 60px;
+}
+.fc-time-time{
+    display: flex;
+    width: auto;
+}
+
+.fc-time-delete{
+    display: flex;
+    width: 100px;
+    margin-left: 10px;
+    color: #42598b;
+}
+
+.fc-time-text{
+    display: flex;
+    font-size: 14px;
+    color: gray;
+    align-items: center;
+}
+
+.fc-time-menubtn{
+    display: flex;
+    align-self:flex-end;
+    height: 30px;
+    width: 50px;
+}

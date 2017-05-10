@@ -1,0 +1,10 @@
+.specification-title {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-left: 10px;
+    padding-right: 10px;
+    flex-direction: row;
+    width: 50px;
+    height: auto;
+}

@@ -1,0 +1,28 @@
+.fc-content{
+    display: flex;
+    flex-direction: row;
+}
+
+.fc-avatar{
+    display: flex;
+    height: 40px;
+    width: 40px;
+    padding: 6px;
+}
+
+.fc-text-contariner{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 6px;
+}
+
+.fc-name{
+    color: cornflowerblue;
+    padding-bottom: 3px;
+}
+
+.fc-content{
+    color: black;
+}
+

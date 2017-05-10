@@ -1,0 +1,9 @@
+.fc-photo-item
+{
+    display: flex;
+    border-width: 1px;
+    border-color: red;
+    height: 21vw;
+    width: 30%;
+    padding: 2px;
+}

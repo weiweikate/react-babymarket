@@ -1,0 +1,119 @@
+.bmdd-comment-root{
+    display: flex;
+    flex-direction: column;
+}
+
+.bmdd-comment-auther{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bmdd-comment-auther-left{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bmdd-comment-auther-right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 0px;
+}
+.bmdd-conmment-avatar{
+    display: flex;
+    height: 36px;
+    width: 36px;
+    padding: 6px;
+    margin-left: 10px;
+    margin-top: 4px;
+    border-radius: 50%;
+}
+
+.bmdd-comment-name-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 6px;
+}
+
+.bmdd-comment-name{
+    color: #51422c;
+}
+
+.bmdd-comment-time{
+    font-size: 11px;
+    color: #aaadaf;
+}
+
+.bmdd-comment-like-containner{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+}
+
+.bmdd-comment-like-img{
+    height: 11px;
+    width: 10px;
+    margin-right: 5px;
+}
+
+.bmdd-comment-like-text{
+    font-size: 12px;
+    color: #aaadaf;
+}
+
+.bmdd-comment-reply{
+    font-size: 12px;
+    color: #aaadaf;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.bmdd-comment-content{
+    margin-left: 65px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    color: #494d54;
+}
+
+.bmdd-comment-reply-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: #f1f3f4;
+    height: auto;
+    width: auto;
+    margin:0px;
+    margin-left: 65px;
+    margin-right: 10px;
+    padding: 6px;
+    font-size: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 8px;
+}
+
+.bmdd-comment-reply-auther{
+    display: block;
+    height: 20px;
+    width: auto;
+    color: #6a8ebf;
+    margin-right: 6px;
+}
+
+.bmdd-comment-reply-content{
+    display: flex;
+    flex:1;
+    color: #6e7072;
+}
+
+.bmdd-comment-sepline{
+    display: flex;
+    width: 100%;
+    background-color: #f5f5f5;
+    height: 1px;
+}

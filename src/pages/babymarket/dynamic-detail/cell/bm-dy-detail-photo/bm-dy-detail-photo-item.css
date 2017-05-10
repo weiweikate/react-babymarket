@@ -1,0 +1,7 @@
+.bm-photo-item
+{
+    display: flex;
+    height: 25vw;
+    width: 30%;
+    padding: 2px;
+}

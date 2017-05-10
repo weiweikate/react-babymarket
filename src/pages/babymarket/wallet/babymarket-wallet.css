@@ -1,0 +1,14 @@
+.bm-wallet-root{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.bm-wallet-content{
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin-top: 44px;
+    flex: 1;
+}

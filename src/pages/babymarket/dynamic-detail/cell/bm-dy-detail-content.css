@@ -1,0 +1,61 @@
+.bmdd-content-roo{
+    display: flex;
+    flex-direction: row;
+}
+
+.bmdd-content-user-time{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bmdd-content-userinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bmdd-content-avatar{
+    display: flex;
+    height: 36px;
+    width: 36px;
+    padding: 6px;
+    margin-left: 10px;
+    margin-top: 4px;
+    border-radius: 50%;
+}
+
+.bmdd-content-name{
+    margin-left: 4px;
+    color: #51422c;
+}
+
+.bmdd-content-time {
+    margin-right: 12px;
+    color: #aaadaf;
+}
+
+.bmdd-content-text-contariner{
+    display: block;
+    flex-direction: column;
+    flex: 1;
+    padding: 12px;
+    padding-top: 2px;
+}
+
+.bmdd-content-content{
+    color: black;
+}
+
+.bmdd-content-at{
+    display: inline;
+    margin:5px;
+    color: #6a8ebf;
+}
+
+.bmdd-content-topic{
+    display: inline;
+    margin:5px;
+    color: #6a8ebf;
+}

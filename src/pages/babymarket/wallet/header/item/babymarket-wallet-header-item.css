@@ -1,0 +1,18 @@
+.bmw-header-item-root{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.bmw-header-item-title{
+    font-size: 10px;
+    color: #af9c81;
+}
+
+.bmw-header-item-value{
+    font-size: 32px;
+    margin-top: 6px;
+}

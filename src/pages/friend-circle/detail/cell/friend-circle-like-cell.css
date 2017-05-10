@@ -1,0 +1,15 @@
+.fc-like-content{
+    display: flex;
+    flex-direction: row;
+    margin-left: 60px;
+    flex-wrap: wrap;
+}
+
+.fc-like-img{
+    display: flex;
+    width: 130px;
+    height: 30px;
+    margin: 1px;
+    margin-top: 3px;
+    margin-bottom: 2px;
+}

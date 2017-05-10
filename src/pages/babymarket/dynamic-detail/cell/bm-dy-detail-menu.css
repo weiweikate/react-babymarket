@@ -1,0 +1,20 @@
+.bmddm-root{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bmddm-left{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin-left: 4px;
+}
+
+.bmddm-img{
+    display: flex;
+    height: 14px;
+    width: 14px;
+    padding: 13px;
+    /*border: 1px solid red;*/
+}

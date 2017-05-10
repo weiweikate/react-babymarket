@@ -1,0 +1,19 @@
+.bmr-header-root{
+    display: flex;
+    flex-direction: column;
+    margin-top: 44px;
+    background-color: #715329;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-bottom: 15px;
+}
+
+.bmr-header-title{
+    font-size: 8px;
+    color: #af9c81;
+}
+.bmr-header-value{
+    font-size: 42px;
+    margin-top: 6px;
+    color: white;
+}

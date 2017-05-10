@@ -1,0 +1,18 @@
+.bm-reward-item-root{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px;
+}
+.bm-reward-item-title{
+    color: #5e6064;
+    font-size: 12px;
+}
+.bm-reward-item-value{
+
+}
+.bm-reward-item-time{
+    color: #b0b1b3;
+    font-size: 10px;
+}

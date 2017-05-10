@@ -1,0 +1,16 @@
+.bmwis-root{
+    display: flex;
+    flex-direction: row;
+    height: 25px;
+    background-color: #f2f3f4;
+}
+
+.bmwis-root span{
+    margin-left: 20px;
+    color: #7d7f81;
+    line-height: 25px;
+    height:25px;
+    text-align: center;
+
+    font-size: 12px;
+}

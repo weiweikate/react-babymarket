@@ -1,0 +1,40 @@
+/*搜索栏*/
+/*筛选栏*/
+
+.screening {
+    height: 50px;
+    border-top: 1px solid #EBEBEB;
+    border-bottom: 1px solid #EBEBEB;
+    margin-top: 1px;
+}
+
+/*clear 属性规定元素的哪一侧(左右)不允许其他浮动元素*/
+.screening ul {
+    clear: both;/*两侧都不允许*/
+}
+
+/*定义和用法
+float 属性定义元素在哪个方向浮动。以往这个属性总应用于图像，使文本围绕在图像周围，不过在 CSS 中，任何元素都可以浮动。浮动元素会生成一个块级框，而不论它本身是何种元素。
+如果浮动非替换元素，则要指定一个明确的宽度；否则，它们会尽可能地窄。
+注释：假如在一行之上只有极少的空间可供浮动元素，那么这个元素会跳至下一行，这个过程会持续到某一行拥有足够的空间为止。*/
+.screening ul li {
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    width: 28%;
+    text-align: center;
+    font-size: 16px;
+    color: #acadaa;
+}
+.screening ul li:last-child {
+    width: 15%;
+    border-left: 1px solid #EBEBEB;
+    color: #494848;
+}
+.screening ul li.curr {
+    color: #FF0000;
+}
+.sort-icon {
+    width: 10px;
+    margin: 10px 0 0 10px;
+}
