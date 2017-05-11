@@ -6,6 +6,10 @@ import React,{Component} from 'react';
 import './bm-product-info.css';
 
 export default class BMProductInfo extends Component {
+    constructor(props){
+        super(props);
+        this.isHoldingTitle = false;
+    }
 
     rateText(){
         return  ((this.props.product.TaxRate === '0' || this.props.product.TaxRate === undefined) ? '' : '税率：'+this.props.product.TaxRate+'元');
@@ -32,6 +36,31 @@ export default class BMProductInfo extends Component {
         }
     }
 
+    titleClicked(){
+        window.JSBridge.sendDataToNative({
+            title:this.props.product.ShowName,
+            productId:this.props.product.Id
+        },'productTitleClicked',null);
+    }
+
+    onTitleTouchStart(){
+        this.isHoldingTitle = true;
+        let self = this;
+        setTimeout(() => {
+            console.log('setTimeout');
+            if (self.isHoldingTitle){
+                self.isHoldingTitle = false;
+                self.titleClicked();
+            }
+        },800);
+        console.log('onTitleTouchStart');
+    }
+
+    onTitleTouchEnd(){
+        this.isHoldingTitle = false;
+        console.log('onTitleTouchEnd');
+    }
+
     render(){
         return <div className="bmpi-content">
             <div className="bmpi-sep"></div>
@@ -40,7 +69,7 @@ export default class BMProductInfo extends Component {
                 <span className="bmpi-country">{this.supplyText()}</span>
             </div>
             <span className="bmpi-price">￥{this.props.product.SalePrice}</span>
-            <span className="bmpi-title">{this.props.product.ShowName}</span>
+            <span onTouchStart={this.onTitleTouchStart.bind(this)} onTouchEnd={this.onTitleTouchEnd.bind(this)} className="bmpi-title">{this.props.product.ShowName}</span>
             <p className="bmpi-des">{this.props.product.Subtitle}</p>
             <div className="bmpi-express-base">
                 <span className="bmpi-location">配送费：{this.props.product.Warehouse} 到 {this.props.province}</span>

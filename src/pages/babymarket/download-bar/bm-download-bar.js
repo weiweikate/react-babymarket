@@ -45,7 +45,7 @@ export default class BMDownloadBar extends Component{
                     {/*<span className="bmdb-des">描述</span>*/}
                 </div>
             </div>
-            <a href={this.link()}><span className="bmdb-download-button">打开</span></a>
+            <a id="invite_download0" href={this.link()}><span className="bmdb-download-button">打开</span></a>
         </div>
     }
 }

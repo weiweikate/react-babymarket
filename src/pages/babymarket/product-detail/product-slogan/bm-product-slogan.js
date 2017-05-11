@@ -10,7 +10,7 @@ export default class BMProductSlogan extends Component{
     onClick(){
         if (window.inApp) {
             let data = {
-                'productId':this.props.productId.Id
+                'productId':this.props.product.Id
             };
             window.JSBridge.sendDataToNative(data,'productGuaranteeViewDidClicked');
         }
@@ -19,12 +19,19 @@ export default class BMProductSlogan extends Component{
         }
     }
 
+    lastItem(){
+        if (window.Tool.isTrue(this.props.product.Import)) {
+            return <BMProductSloganItem imgsrc="./img/product_feiji_logo.png" title="海外直邮"/>
+        }
+        return <BMProductSloganItem imgsrc="./img/product_share_logo.png" title="分享有礼"/>
+    }
+
     render(){
         return <div onClick={this.onClick} className="bmps-content">
             <BMProductSloganItem imgsrc="./img/product_ziying_logo.png" title="码头自营"/>
             <BMProductSloganItem imgsrc="./img/product_zheng_logo.png" title="正品保证"/>
-            <BMProductSloganItem imgsrc="./img/product_feiji_logo.png" title="海外直邮"/>
             <BMProductSloganItem imgsrc="./img/product_tui_logo.png" title="七天退货"/>
+            {this.lastItem()}
         </div>
     }
 }

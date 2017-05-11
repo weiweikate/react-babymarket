@@ -55,4 +55,9 @@ export default function initRoute() {
         }
     }
     console.info('finish initRoute with action : ' + action);
+
+    /**
+     * 加载魔窗Mlink配置
+     */
+    window.loadMlink();
 }
