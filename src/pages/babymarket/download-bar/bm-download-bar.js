@@ -9,8 +9,17 @@ export default class BMDownloadBar extends Component{
     constructor(props){
         super(props);
         this.state = {
-            showSelf:true
+            showSelf:true,
+            downloadUrl:''
         };
+    }
+
+    componentDidMount() {
+        let link = this.link();
+        this.setState({
+            downloadUrl:link
+        })
+        console.log('download url = ' + link);
     }
 
     link(){
@@ -45,7 +54,7 @@ export default class BMDownloadBar extends Component{
                     {/*<span className="bmdb-des">描述</span>*/}
                 </div>
             </div>
-            <a id="invite_download0" href={this.link()}><span className="bmdb-download-button">打开</span></a>
+            <a id="invite_download0" href={this.state.downloadUrl}><span className="bmdb-download-button">打开</span></a>
         </div>
     }
 }

@@ -59,5 +59,7 @@ export default function initRoute() {
     /**
      * 加载魔窗Mlink配置
      */
-    window.loadMlink();
+    setTimeout(()=> {
+        window.loadMlink();
+    },1000);
 }

@@ -18,3 +18,14 @@
     padding: 13px;
     /*border: 1px solid red;*/
 }
+
+.bmddm-left .deleteBtn {
+    display: flex;
+    height: 14px;
+    width: 34px;
+    padding: 13px;
+    padding-left: 8px;
+    padding-top: 10px;
+    font-size: 13px;
+    color: #2aabd2;
+}

@@ -184,12 +184,26 @@ export default class BMDyDetailMenu extends Component
         return false;
     }
 
+    deleteDynamic(){
+        let data = {
+            'dynamicId':this.props.dynamicId
+        };
+        window.JSBridge.sendDataToNative(data,'dynamicDeleteBtnClicked');
+    }
+
+    deleteBtn(){
+        if (this.props.data.CreatorId === window.Storage.currentMemberId()) {
+            return <span className="deleteBtn" onClick={this.deleteDynamic.bind(this)}>删除</span>;
+        }
+    }
+
     render(){
         return <div className="bmddm-root">
             <div className="bmddm-left">
                 <img src={this.favoriteIcon()} onClick={this.dynamicFavoriteDidClicked.bind(this)} className="bmddm-img"/>
                 <img src={this.likeIcon()} onClick={this.dynamicLikeDidClicked.bind(this)} className="bmddm-img"/>
                 <img src={'./img/dynamic-share-icon-normal.png'} onClick={this.dynamicShareDidClicked.bind(this)} className="bmddm-img"/>
+                {this.deleteBtn()}
             </div>
             <img src={'./img/dynamic-comment-icon.png'} onClick={this.dynamicCommentDidClicked.bind(this)} className="bmddm-img"/>
         </div>
