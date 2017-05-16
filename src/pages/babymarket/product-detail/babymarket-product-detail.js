@@ -48,13 +48,16 @@ export default class BabymarketProductDetail extends Component {
 
     //商品详情
     requestProductInfo(theId){
+        if (window.Tool.isEmptyStr(theId)) {
+            window.Tool.showAlert('商品Id为空');
+        }
 
         let r = window.RequestReadFactory.productDetailRead(theId);
         let self = this;
         r.finishBlock = (req,firstData) => {
             if (window.Tool.isValidObject(firstData)) {
                 let images = this.state.images;
-                images.push(window.Tool.imageURLForId(firstData.ImgId));
+                images.unshift(window.Tool.imageURLForId(firstData.ImgId));
                 self.setState({
                     product:firstData,
                     images:images
@@ -67,6 +70,10 @@ export default class BabymarketProductDetail extends Component {
                  * 浏览器中，用百度地图获取位置信息
                  */
                 self.requestLocation();
+            }
+            else
+            {
+                window.Tool.showAlert('商品不存在或已下架');
             }
         };
         r.completeBlock = () => {

@@ -18,8 +18,8 @@
 
 .bmdd-content-avatar{
     display: flex;
-    height: 36px;
-    width: 36px;
+    height: 33px;
+    width: 33px;
     padding: 6px;
     margin-left: 10px;
     margin-top: 4px;
@@ -42,6 +42,7 @@
     flex: 1;
     padding: 12px;
     padding-top: 2px;
+    padding-left: 57px;
 }
 
 .bmdd-content-content{

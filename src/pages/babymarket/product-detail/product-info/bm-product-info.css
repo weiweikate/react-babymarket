@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: row;
     margin-top: 10px;
+    margin-bottom: 8px;
     color: #7798c4;
 }
 
@@ -23,9 +24,10 @@
     height: 5px;
     width: 10px;
     font-size: 60px;
-    margin-top: -40px;
+    margin-top: -43px;
     margin-left: 6px;
     margin-right: 6px;
+    border-radius: 50%;
 }
 
 .bmpi-country{
@@ -50,7 +52,7 @@
     margin: 4px;
     color: #585858;
     margin-left: 10px;
-    margin-bottom:12px;
+    margin-bottom:2px;
 }
 
 .bmpi-express-base{

@@ -13,6 +13,8 @@ import BabymarketHelp from './pages/babymarket/help/babymarket-help';
 import BabymarketSystemMessage from './pages/babymarket/system-message/babymarket-system-message';
 import BabymarketReward from './pages/babymarket/reward/babymarket-reward';
 import BabymarketWallet from './pages/babymarket/wallet/babymarket-wallet';
+import BabymarketRefund from './pages/babymarket/refund/babymarket-refund';
+import BabymarketRefundFinish from './pages/babymarket/refund/babymarket-refund-finish';
 
 import BabymarketDownloadPC from './pages/download/babymarket/babymarket-download-pc';
 import BabymarketDownloadMobile from './pages/download/babymarket/babymarket-download-mobile';
@@ -27,25 +29,66 @@ export default function initRoute() {
      * Render the HTML
      */
 
+    /**
+     * 商品详情
+     */
     if ('product-detail' === action) {
         ReactDOM.render(<BabymarketProductDetail/>, root);
     }
+
+    /**
+     * 动态
+     */
     else if ('dynamic-detail' === action) {
         ReactDOM.render(<BabymarketDynamicDetail/>, root);
     }
+
+    /**
+     * 帮组
+     */
     else if ('help' === action) {
         ReactDOM.render(<BabymarketHelp/>, root);
     }
+
+    /**
+     * 系统消息
+     */
     else if ('system-message' === action){
         ReactDOM.render(<BabymarketSystemMessage/>, root);
     }
+
+    /**
+     * 我的资产
+     */
     else if ('wallet' === action){
         ReactDOM.render(<BabymarketWallet/>, root);
     }
+
+    /**
+     * 奖励
+     */
     else if ('reward' === action){
         let isSave = window.Tool.getURLParameter('isSave');
         ReactDOM.render(<BabymarketReward isSave={window.Tool.isTrue(isSave)}/>, root);
     }
+
+    /**
+     * 退款
+     */
+    else if ('refund' === action){
+        ReactDOM.render(<BabymarketRefund/>, root);
+    }
+
+    /**
+     * 退款完成
+     */
+    else if ('refund-finish' === action){
+        ReactDOM.render(<BabymarketRefundFinish/>, root);
+    }
+
+    /**
+     * 下载
+     */
     else {
         if (isMobile) {
             ReactDOM.render(<BabymarketDownloadMobile/>, root);

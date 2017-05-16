@@ -12,7 +12,7 @@ export default class BMProductInfo extends Component {
     }
 
     rateText(){
-        return  ((this.props.product.TaxRate === '0' || this.props.product.TaxRate === undefined) ? '' : '税率：'+this.props.product.TaxRate+'元');
+        return  ((this.props.product.TaxRate === '0' || this.props.product.TaxRate === undefined) ? '' : '税率：'+parseFloat(this.props.product.TaxRate).toFixed(2) * 100 + '%');
     }
 
     expressText(){
@@ -64,13 +64,13 @@ export default class BMProductInfo extends Component {
     render(){
         return <div className="bmpi-content">
             <div className="bmpi-sep"></div>
+            <span onTouchStart={this.onTitleTouchStart.bind(this)} onTouchEnd={this.onTitleTouchEnd.bind(this)} className="bmpi-title">{this.props.product.ShowName}</span>
+            <p className="bmpi-des">{this.props.product.Subtitle}</p>
+            <span className="bmpi-price">￥{this.props.product.SalePrice}</span>
             <div className="bmpi-country-base">
                 <span className="bmpi-img">.</span>
                 <span className="bmpi-country">{this.supplyText()}</span>
             </div>
-            <span className="bmpi-price">￥{this.props.product.SalePrice}</span>
-            <span onTouchStart={this.onTitleTouchStart.bind(this)} onTouchEnd={this.onTitleTouchEnd.bind(this)} className="bmpi-title">{this.props.product.ShowName}</span>
-            <p className="bmpi-des">{this.props.product.Subtitle}</p>
             <div className="bmpi-express-base">
                 <span className="bmpi-location">配送费：{this.props.product.Warehouse} 到 {this.props.province}</span>
                 <span className="bmpi-express">{this.expressText()}</span>

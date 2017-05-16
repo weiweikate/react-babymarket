@@ -7,6 +7,7 @@ import './babymarket-reward-header.css';
 export default class BabymarketRewardHeader extends Component {
     total(){
         let total = window.Tool.isValidStr(this.props.total) ? this.props.total : '0.0';
+        console.log('total = ' + this.props.total);
         return '￥' + total;
     }
     render(){

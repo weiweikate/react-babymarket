@@ -122,7 +122,8 @@ export default class RequestReadFactory {
             "Operation":operation,
             "Condition":"${RelevancyId} == '" + theId + "' && ${RelevancyBizElement} == 'Attachments'",
             "MaxCount":count,
-            "StartIndex":index
+            "StartIndex":index,
+            "Order":'${CreateTime} ASC'
         };
         let req = new RequestRead(bodyParameters);
         req.name = '附件';//用于日志输出

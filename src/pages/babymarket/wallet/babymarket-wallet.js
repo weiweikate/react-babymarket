@@ -3,13 +3,12 @@
  */
 import React,{Component} from 'react';
 import './babymarket-wallet.css';
-import TCPullLoadComponet from '../../common/tc-pull-load-componet';
 
+import TCPullLoadComponet from '../../common/tc-pull-load-componet';
 import BabymarketWalletItem from './item/babymarket-wallet-item';
 import BabymarketWalletHeader from './header/babymarket-wallet-header';
 import TCNavigationBar from '../../common/nav/tc-navigation-bar';
 import BabymarketWalletItemSection from './item/babymarket-wallet-item-section';
-
 import ReactPullLoad,{ STATS } from 'react-pullload';
 
 export default class BabymarketWallet extends TCPullLoadComponet{
@@ -31,7 +30,7 @@ export default class BabymarketWallet extends TCPullLoadComponet{
         let self = this;
         window.Storage.currentMemberInfoAsync((member) => {
             self.setState({
-                balance:member.balance
+                balance:member.Balance
             })
         });
     }
@@ -84,6 +83,14 @@ export default class BabymarketWallet extends TCPullLoadComponet{
                 title="我的资产"
                 rightText="优惠券"
             />
+            {/*<select style={{backgroundColor:'transparent',borderColor:'transparent',height:100,marginTop:50,}}>*/}
+                {/*<option value="volvo">Volvo</option>*/}
+                {/*<option value="saab">Saab</option>*/}
+                {/*<option value="opel">Opel</option>*/}
+                {/*<option value="saab">Saab</option>*/}
+                {/*<option value="opel">Opel</option>*/}
+                {/*<option value="audi">Audi</option>*/}
+            {/*</select>*/}
             {this.generatePullLoad()}
         </div>
     }

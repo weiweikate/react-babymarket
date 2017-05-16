@@ -12,6 +12,7 @@ import BMDyDetailPhotoCell from './cell/bm-dy-detail-photo/bm-dy-detail-photo-ce
 import BMDyDetailCommentHeader from './cell/comment/bm-dy-detail-comment-header';
 import BMDownloadBar from '../download-bar/bm-download-bar';
 import BMDynamicDetailProduct from './cell/bm-dy-detail-product';
+import BMDyDetailFrom from './cell/bm-dy-detail-from';
 
 import ReactPullLoad,{ STATS } from 'react-pullload';
 
@@ -78,7 +79,7 @@ export default class BabymarketDynamicDetail extends TCPullLoadComponet {
     generatePhotos(){
         if (window.Tool.isValidArr(this.state.data)) {
             if ('Normal' === this.dynamicType()) {
-                return <BMDyDetailPhotoCell key={30} type="normal" data={this.state.data}/>;
+                return <BMDyDetailPhotoCell key={90002} type="normal" data={this.state.data}/>;
             }
             else if ('Product' === this.dynamicType()) {
                 return <BMDynamicDetailProduct
@@ -86,10 +87,11 @@ export default class BabymarketDynamicDetail extends TCPullLoadComponet {
                     des={this.state.data.ProductDescription}
                     img={this.state.data.ProductImgId}
                     productId={this.state.data.SourceId}
+                    key={90001}
                 />
             }
             else if ('Order' === this.dynamicType()) {
-                return <BMDyDetailPhotoCell key={20} type="order" data={this.state.data}/>;
+                return <BMDyDetailPhotoCell key={90000} type="order" data={this.state.data}/>;
             }
         }
     }
@@ -97,11 +99,11 @@ export default class BabymarketDynamicDetail extends TCPullLoadComponet {
     generateComments(){
         if (window.Tool.isValidArr(this.state.itemDatas)) {
             let comments = [];
-            comments.push(<BMDyDetailCommentHeader count={this.state.total} key={-1}/>);
+            comments.push(<BMDyDetailCommentHeader count={this.state.total} key={99}/>);
 
             let i = 0;
             this.state.itemDatas.forEach(function (comment) {
-                comments.push(<BMDyDetailComment key={i} comment={comment}/>)
+                comments.push(<BMDyDetailComment key={i + 100} comment={comment}/>)
                 i++;
             });
             return comments;
@@ -110,7 +112,7 @@ export default class BabymarketDynamicDetail extends TCPullLoadComponet {
 
     generateDownloadBar(){
         if (!window.inApp) {
-            return <BMDownloadBar key={10}/>
+            return <BMDownloadBar key={5}/>
         }
     }
 
@@ -142,6 +144,12 @@ export default class BabymarketDynamicDetail extends TCPullLoadComponet {
             data={this.state.data}
         />);
         arr.push(this.generatePhotos());
+
+        if ('Order' === this.dynamicType()) {
+            console.log('is from order');
+            arr.push(<BMDyDetailFrom key={4} from="来自于订单分享"/>);
+        }
+
         arr.push(<BMDyDetailMenu
             data={this.state.data}
             key={2}
@@ -157,7 +165,6 @@ export default class BabymarketDynamicDetail extends TCPullLoadComponet {
 
         return arr;
     }
-
 
     render(){
 

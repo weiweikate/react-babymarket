@@ -101,10 +101,10 @@ export default class BMDyDetailComment extends Component{
 
     replyElement(){
         if (window.Tool.isValidId(this.props.comment.FromCommentsId)) {
-            return <p className="bmdd-comment-reply-container">
+            return <div className="bmdd-comment-reply-container">
                 <span onClick={this.avatarDidClicked.bind(this)} id="reply-name" className="bmdd-comment-reply-auther">{this.props.comment.FromCommentPersonName}: </span>
                 <span className="bmdd-comment-reply-content">{this.props.comment.FromCommentContent}</span>
-            </p>
+            </div>
         }
     }
 

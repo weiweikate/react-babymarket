@@ -16,7 +16,7 @@ export default class BabymarketReward extends TCPullLoadComponet {
     constructor(props) {
         super(props);
         this.state = {
-            total:''
+            totalValue:''
         };
         this.inheritStateFromSuper();
     }
@@ -28,8 +28,10 @@ export default class BabymarketReward extends TCPullLoadComponet {
 
         let self = this;
         window.Storage.currentMemberInfoAsync((member) => {
+            let total = self.props.isSave ? member.BuyerCommission:member.Commission;
+            console.log('get total from member = ' + total);
             self.setState({
-                total:self.props.isSave ? member.buyerCommission:member.commission
+                totalValue:total
             })
         });
     }
@@ -68,7 +70,7 @@ export default class BabymarketReward extends TCPullLoadComponet {
             i++;
         });
         return <ul className="bm-reward-content">
-            <BabymarketRewardHeader title={this.props.isSave ? "已省金额":"收到奖励"} total={this.state.total}/>
+            <BabymarketRewardHeader title={this.props.isSave ? "已省金额":"收到奖励"} total={this.state.totalValue}/>
             {arr}
         </ul>
     }
