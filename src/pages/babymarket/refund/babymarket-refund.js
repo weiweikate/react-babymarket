@@ -8,20 +8,112 @@
 import React from 'react';
 
 export default class BabymarketRefund extends React.Component{
-    reasonDidClicked(){
+    constructor(props){
+        super(props);
 
+        /**
+         * _userName: 退款联系人,
+         * _userPhone: 联系方式,
+         * _reasons: 退款原因枚举,
+         * _selectedReason: 选中的退款原因,
+         * _refundDes: 退款说明
+         */
+        this.state = {
+            _userName:'',
+            _userPhone:'',
+            _reasons:[],
+            _selectedReason:{},
+            _refundDes:'',
+        };
+
+    }
+
+    componentDidMount() {
+
+        let self = this;
+        window.Storage.currentMemberInfoAsync((member) => {
+            self.setState({
+                _userName:member.Nickname,
+                _userPhone:member.Mobile,
+            })
+        });
+
+        window.Storage.write('refund-reason','');
+        window.Storage.write('refund-des','');
+
+        this.requestData();
+    }
+
+    requestData(){
+        let self = this;
+        let r = window.RequestReadFactory.bmRefundReasonListRead();
+        r.finishBlock = (req) => {
+            let datas = req.responseObject.Datas;
+            self.setState({
+                _reasons:datas
+            });
+        };
+        r.start();
     }
 
     userName(){
-        return 'xxx';
+        return this.state._userName;
     }
 
     userPhone(){
-        return '12543535';
+        return this.state._userPhone;
     }
 
+    /**
+     * 提交
+     */
     submitBtnClicked(){
-        window.location.href = "http://www.baidu.com";
+
+        // host: "192.168.0.156:3000"
+        // hostname: "192.168.0.156"
+        // href: "http://192.168.0.156:3000/?action=refund&inApp=true&orderNo=201705170000000003"
+        // origin: "http://192.168.0.156:3000"
+        // pathname: "/"
+        // port: "3000"
+        // protocol: "http:"
+        // search: "?action=refund&inApp=true&orderNo=201705170000000003"
+
+        let self = this;
+        let orderId = window.Tool.getURLParameter('orderId');
+        console.log('orderId = ' + orderId);
+        this.refundId = window.Tool.guid();
+        let r = window.RequestWriteFactory.bmRefund(this.refundId,orderId,this.state._selectedReason.Id,this.state._refundDes);
+        r.finishBlock = (req) =>
+        {
+            let location = window.location;
+            let newSearch = location.search.replace('action=refund','action=refund-finish');
+            newSearch = newSearch + '&refundId=' + this.refundId;
+            let newHref = location.origin + location.pathname + newSearch;
+            console.log('new href = ' + newHref);
+            window.location.href = newHref;
+        }
+        r.start();
+    }
+
+    selectOnChange(e){
+        let selet = e.currentTarget;
+        console.log('select value = ' + selet.value);
+        window.Storage.write('refund-reason',selet.value);
+    }
+
+    textareaOnChange(e){
+        let element = e.currentTarget;
+        let value = element.value;
+        console.log('textareaOnChange : ' + value);
+        window.Storage.write('refund-des',value);
+    }
+
+    selectOptions(){
+        let arr = [];
+        this.state._reasons.forEach((reason,index) => {
+            arr.push(<option key={reason.Order} value={reason.Id}>{reason.Name}</option>)
+        });
+        return arr;
     }
 
     render(){
@@ -33,25 +125,18 @@ export default class BabymarketRefund extends React.Component{
                 <span>3.退款按付款方式原路返回，不能返回的付款方式返回余额中</span><br/>
                 <span>4.订单一旦取消，无法恢复</span><br/>
             </p>
-            <div onClick={this.reasonDidClicked} style={styles.reasonCell}>
+            <div style={styles.reasonCell}>
                 <span>退款原因：</span>
                 <div>
-                    <select dir="rtl" style={{backgroundColor:'transparent',borderColor:'transparent',height:20,marginTop:0,align:'right'}}>
-                        <option value="不想买了">不想买了</option>
-                        <option value="订单不能按预计时间送达">订单不能按预计时间送达</option>
-                        <option value="配送信息有误">配送信息有误</option>
-                        <option value="忘记使用优惠券">忘记使用优惠券</option>
-                        <option value="商品买错了">商品买错了(颜色、尺寸等弄错了)</option>
-                        <option value="重复下单/误下单">重复下单/误下单</option>
-                        <option value="其他渠道价格更低">其他渠道价格更低</option>
-                        <option value="其他原因">其他原因</option>
+                    <select onChange={this.selectOnChange.bind(this)} dir="rtl" style={{backgroundColor:'transparent',borderColor:'transparent',height:20,marginTop:0,align:'right'}}>
+                        {this.selectOptions()}
                     </select>
                     <img style={styles.reasonImg}/>
                 </div>
             </div>
             <div style={styles.des}>
                 <span>退款说明：</span>
-                <textarea style={styles.textarea} placeholder="选填"></textarea>
+                <textarea onChange={this.textareaOnChange.bind(this)} style={styles.textarea} placeholder="选填"></textarea>
             </div>
             <div style={styles.contact}>
                 <span style={styles.name}>退款联系人：{this.userName()}</span>
@@ -60,7 +145,7 @@ export default class BabymarketRefund extends React.Component{
                     <span style={styles.phoneValue}>{this.userPhone()}</span>
                 </div>
             </div>
-            <div onClick={this.submitBtnClicked} style={styles.submitBtnBase}>
+            <div onClick={this.submitBtnClicked.bind(this)} style={styles.submitBtnBase}>
                 <span style={styles.submitBtn}>提交</span>
             </div>
         </div>

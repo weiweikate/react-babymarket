@@ -22,24 +22,69 @@ export default class BabymarketADView extends Component {
         super(props);
         this.state = {
             selectIndex:0,
-            images:{}
+            images:{},
         };
+        this.imagesStates = {};
     }
 
     componentWillReceiveProps(nextProps) {
         this.getImagesFromNative(nextProps);
     }
 
+    componentDidMount() {
+    }
+
     getImagesFromNative(props){
-        let self = this;
-        props.images.forEach((imgURL)=>{
-            let images = self.state.images;
-            if (window.Tool.isEmptyStr(images[imgURL])) {
-                images[imgURL] = window.TCGlobal.BabymarketDefaultImage;
-                self.setState({
-                    images:images
-                })
+        if (window.cacheImgByNative && window.inApp && props && window.Tool.isValidArr(props.images))
+        {
+            console.log('getImagesFromNative start');
+
+            /**
+             * 先下载第1张图片，再下载后面的图片
+             */
+            let self = this;
+            let firstImageUrl = props.images[0];
+            if (window.Tool.isValidStr(firstImageUrl)) {
+                this.downloadImage(firstImageUrl,() => {
+                    props.images.forEach((imgURL,index)=>{
+
+                        /**
+                         * 第一张不用再下载
+                         */
+                        if (index > 0) {
+                            self.downloadImage(imgURL);
+                        }
+                    });
+                });
             }
+        }
+    }
+
+    downloadImage(imgURL,finishBlock){
+        let state = this.imagesStates[imgURL];
+        if (window.Tool.isValidStr(state) && state === 'finish') {
+            return;
+        }
+
+        let self = this;
+        let images = self.state.images;
+        if (window.Tool.isEmptyStr(images[imgURL])) {
+            images[imgURL] = window.TCGlobal.BabymarketDefaultImage;
+            self.setState({
+                images:images
+            })
+        }
+        window.JSBridge.sendDataToNative({
+            imgURL:imgURL + '&w=60&h=60',
+        },'downloadImgForJS',(data) => {
+            let oldURL = imgURL;//data[0];
+            let newURL = data[1];
+            let images = self.state.images;
+            images[oldURL] = newURL;
+            self.setState({
+                images:images
+            });
+
             window.JSBridge.sendDataToNative({
                 imgURL:imgURL,
             },'downloadImgForJS',(data) => {
@@ -47,9 +92,14 @@ export default class BabymarketADView extends Component {
                 let newURL = data[1];
                 let images = self.state.images;
                 images[oldURL] = newURL;
+                self.imagesStates[oldURL] = 'finish';
                 self.setState({
                     images:images
-                })
+                });
+
+                if (finishBlock) {
+                    finishBlock();
+                }
             });
         });
     }

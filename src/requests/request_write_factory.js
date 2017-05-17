@@ -173,6 +173,42 @@ export default class RequestWriteFactory {
 
         return req;
     }
+
+    //宝贝码头 退款
+    static bmRefund(refundId,orderId,reasonId,reason=''){
+        let operation = Operation.sharedInstance().bmRefundWrite;
+        let status = Network.sharedInstance().statusNew;
+
+        let params = {
+            "Operation":operation,
+            'Id':refundId,
+            'OrderId':orderId,
+            'Remark':reason,
+            'ReasonId':reasonId,
+        };
+
+        let req = new RequestWrite(status,'Refund',params,null);
+        req.name = '宝贝码头 退款';
+
+        return req;
+    }
+
+    //宝贝码头 取消退款
+    static bmRefundCancel(refundId){
+        let operation = Operation.sharedInstance().bmRefundDelete;
+        let status = Network.sharedInstance().statusExisted;
+
+        let params = {
+            "Operation":operation,
+            'Id':refundId,
+            'Deleted':'True'
+        };
+
+        let req = new RequestWrite(status,'Refund',params,null);
+        req.name = '宝贝码头 取消退款';
+
+        return req;
+    }
 }
 
 

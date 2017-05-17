@@ -111,7 +111,7 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.name = '宝贝码头商品详情';//用于日志输出
-        req.items = ['Id','ShowName','SalePrice','ImgId','Warehouse','Des1','Des','Tax','Subtitle','NationalKey','StoreId','TaxRate'];
+        req.items = ['Id','ShowName','SalePrice','ImgId','Warehouse','Des1','Des','Tax','Subtitle','NationalKey','StoreId','TaxRate','Import','PriceInside'];
         return req;
     }
 
@@ -263,6 +263,19 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.name = '宝贝码头 已省金额';//用于日志输出
+        // req.items = ['Name'];
+        return req;
+    }
+
+    //退款原因枚举
+    static bmRefundReasonListRead(){
+        let operation = Operation.sharedInstance().bmRefundReasonRead;
+        let bodyParameters =  {
+            "Operation":operation,
+            "MaxCount":90,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '宝贝码头 退款原因枚举';//用于日志输出
         // req.items = ['Name'];
         return req;
     }
