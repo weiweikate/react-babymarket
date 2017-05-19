@@ -1,8 +1,0 @@
-.product-detail
-{
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    overflow: scroll;
-    height: 100%;
-}

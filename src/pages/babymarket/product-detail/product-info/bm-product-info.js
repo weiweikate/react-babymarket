@@ -64,7 +64,7 @@ export default class BMProductInfo extends Component {
                 self.isHoldingTitle = false;
                 self.titleClicked();
             }
-        },800);
+        },2000);
         console.log('onTitleTouchStart');
     }
 
@@ -81,9 +81,9 @@ export default class BMProductInfo extends Component {
         console.log('是否是进口 ： ' + this.props.product.Import);
         if (window.Tool.isTrue(this.props.product.Import)){
             return <span style={{
-                border:'1px solid red',
+                border:'1px solid #f0cd74',
                 borderRadius:5,
-                color:'red',
+                color:'#f0cd74',
                 fontSize:14,
                 padding:4,
                 paddingTop:2,
@@ -92,6 +92,16 @@ export default class BMProductInfo extends Component {
                 display:'inline',
             }}>保税</span>
         }
+    }
+
+    buyButton(){
+        if (!window.inApp) {
+            return <span onClick={this.buyBtnClicked.bind(this)} className="bmpi-buy-button">立即购买</span>;
+        }
+    }
+
+    buyBtnClicked(){
+        window.location.href = window.Tool.newHrefWithAction('router');
     }
 
     render(){
@@ -105,7 +115,10 @@ export default class BMProductInfo extends Component {
                 <span onTouchStart={this.onTitleTouchStart.bind(this)} onTouchEnd={this.onTitleTouchEnd.bind(this)} className="bmpi-title">{this.props.product.ShowName}</span>
             </div>
             <p className="bmpi-des">{this.props.product.Subtitle}</p>
-            <span className="bmpi-price">￥{this.price()}</span>
+            <div className="bmpi-price-container">
+                <span className="bmpi-price">￥{this.price()}</span>
+                {this.buyButton()}
+            </div>
             <div className="bmpi-country-base">
                 <span className="bmpi-country">{this.supplyText()}</span>
             </div>
@@ -117,3 +130,5 @@ export default class BMProductInfo extends Component {
         </div>
     }
 }
+
+

@@ -21,6 +21,17 @@ export default class BabymarketRefundFinish extends React.Component{
 
     cancelBtnClicked(){
         this.refundId = window.Tool.getURLParameter('refundId');
+        if (window.Tool.isValidStr(this.refundId)) {
+            this.cancelRequest()
+        }
+        else
+        {
+            //todo
+            this.refundId = '';
+        }
+    }
+
+    cancelRequest(){
         let r = window.RequestWriteFactory.bmRefundCancel(this.refundId);
         r.finishBlock = (req) => {
             window.Tool.showAlert('取消成功');
@@ -34,9 +45,9 @@ export default class BabymarketRefundFinish extends React.Component{
             <div style={styles.header}>
                 <span>您的退款申请已经提交成功！<br/>请耐心等待退款处理结果，谢谢您的理解！</span>
             </div>
-            <span style={styles.propmt}>如果你想取消退款，可以点击下方取消退款按钮</span>
+            <span style={styles.propmt}>如果你想取消退款申请，可以点击下方取消退款按钮</span>
             <div onClick={this.cancelBtnClicked.bind(this)} style={styles.cancelBtnBase}>
-                <span style={styles.cancelBtn}>取消退款</span>
+                <span style={styles.cancelBtn}>取消退款申请</span>
             </div>
         </div>
     }

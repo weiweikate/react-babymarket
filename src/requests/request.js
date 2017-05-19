@@ -134,7 +134,6 @@ export default class Request {
 
         //common
         console.debug('------------------------------> 请求发起：' + that.name);
-
         console.debug('url: ' + this._url);
         console.debug('body:');
         console.debug(JSON.stringify(this._body));
@@ -155,7 +154,7 @@ export default class Request {
                 session = this.bodyParam['_SESSION_'];
             }
             else {
-                session = global.TCGlobal.Storage.currentSession();
+                session = window.Storage.currentSession();
             }
 
             this.urlParam = {

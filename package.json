@@ -53,6 +53,8 @@
     "react-iscroll": "^1.1.2",
     "react-pull-to-refresh": "^1.0.6",
     "react-pullload": "^1.0.6",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "react-swipeable-views": "^0.11.2",
     "react-touch-loader": "^1.1.0"
   },

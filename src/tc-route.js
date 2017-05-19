@@ -4,9 +4,20 @@
 import ReactDOM from 'react-dom';
 import React ,{Component} from 'react';
 
-import ProductDetail from './pages/product-detail/product-detail';
-import FriendCircleDetail from './pages/friend-circle/detail/friend-circle-detail';
+/**
+ * 路由入口
+ */
+import WebOrderIndex from './router-index';
 
+/**
+ * 下载
+ */
+import BabymarketDownloadPC from './pages/download/babymarket/babymarket-download-pc';
+import BabymarketDownloadMobile from './pages/download/babymarket/babymarket-download-mobile';
+
+/**
+ * 宝贝码头
+ */
 import BabymarketDynamicDetail from './pages/babymarket/dynamic-detail/babymarket-dynamic-detail';
 import BabymarketProductDetail from './pages/babymarket/product-detail/babymarket-product-detail';
 import BabymarketHelp from './pages/babymarket/help/babymarket-help';
@@ -16,8 +27,6 @@ import BabymarketWallet from './pages/babymarket/wallet/babymarket-wallet';
 import BabymarketRefund from './pages/babymarket/refund/babymarket-refund';
 import BabymarketRefundFinish from './pages/babymarket/refund/babymarket-refund-finish';
 
-import BabymarketDownloadPC from './pages/download/babymarket/babymarket-download-pc';
-import BabymarketDownloadMobile from './pages/download/babymarket/babymarket-download-mobile';
 
 export default function initRoute() {
     console.info('start initRoute');
@@ -84,6 +93,9 @@ export default function initRoute() {
      */
     else if ('refund-finish' === action){
         ReactDOM.render(<BabymarketRefundFinish/>, root);
+    }
+    else if ('router' === action) {
+        ReactDOM.render(<WebOrderIndex/>, root);
     }
 
     /**

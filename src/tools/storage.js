@@ -71,9 +71,9 @@ export default class Storage {
 
     //当前Session
     static currentSession() {
-        if (global.Tool.isEmptyStr(Storage.sharedInstance()._currentSession)) {
+        if (window.Tool.isEmptyStr(Storage.sharedInstance()._currentSession)) {
                 let value = Storage.read('currentSession');
-                if (!global.Tool.isEmpty(value)) {
+                if (!window.Tool.isEmpty(value)) {
                     Storage.sharedInstance()._currentSession = value;
                 }
                 else {
@@ -90,9 +90,9 @@ export default class Storage {
 
     //当前用户信息
     static currentMemberInfo() {
-        if (global.Tool.isEmptyStr(Storage.sharedInstance()._currentMemberInfo)) {
+        if (window.Tool.isEmptyStr(Storage.sharedInstance()._currentMemberInfo)) {
             let value = Storage.read('currentMemberInfo');
-            if (!global.Tool.isEmpty(value)) {
+            if (!window.Tool.isEmpty(value)) {
                 Storage.sharedInstance()._currentMemberInfo = value;
             }
             else {

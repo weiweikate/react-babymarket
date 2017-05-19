@@ -375,5 +375,20 @@ export default class Tool {
         var ishttps = 'https:' === document.location.protocol ? true: false;
         return ishttps;
     }
+
+    /**
+     * 更换action，切换页面
+     * @param action
+     */
+    static newHrefWithAction(action){
+        let oldAction = Tool.getURLParameter('action');
+        if (Tool.isValidStr(oldAction))
+        {
+            let location = window.location;
+            let newHref = location.href.replace('action='+oldAction,'action='+action);
+            console.log('new href = ' + newHref);
+            return newHref;
+        }
+    }
 }
 

@@ -62,11 +62,14 @@ export default class BabymarketADView extends Component {
 
     downloadImage(imgURL,finishBlock){
         let state = this.imagesStates[imgURL];
-        if (window.Tool.isValidStr(state) && state === 'finish') {
+        if (window.Tool.isValidStr(state) && (state === 'finish' || state === 'downloading')) {
             return;
         }
 
         let self = this;
+
+        self.imagesStates[imgURL] = 'downloading';
+
         let images = self.state.images;
         if (window.Tool.isEmptyStr(images[imgURL])) {
             images[imgURL] = window.TCGlobal.BabymarketDefaultImage;
