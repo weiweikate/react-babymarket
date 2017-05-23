@@ -141,7 +141,7 @@ export default class Tool {
     }
 
     static isValid(object) {
-        return !Tool.isEmpty();
+        return !Tool.isEmpty(object);
     }
 
     static isEmptyId(theId){
@@ -202,6 +202,16 @@ export default class Tool {
         return !Tool.isEmptyArr(arr);
     }
 
+    /**
+     * 数组是否越界判断
+     */
+    static isArrValidForIndex(arr,index){
+        if (Tool.isValidArr(arr) && arr.length > index) {
+            return true;
+        }
+        return false;
+    }
+
     static isTrue(str){
         if (Tool.isEmptyStr(str)) {
             return false;
@@ -211,6 +221,10 @@ export default class Tool {
 
     static isFalse(str){
         return !Tool.isTrue(str);
+    }
+
+    static isFunction(fun){
+        return typeof fun === 'function';
     }
 
     //弹窗提示

@@ -101,7 +101,7 @@ export default class BMProductInfo extends Component {
     }
 
     buyBtnClicked(){
-        window.location.href = window.Tool.newHrefWithAction('router');
+        window.location.href = window.Tool.newHrefWithAction('add-address');
     }
 
     render(){

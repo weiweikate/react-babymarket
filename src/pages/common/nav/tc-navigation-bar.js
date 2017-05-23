@@ -45,7 +45,7 @@ export default class TCNavigationBar extends Component{
 
             <img
                 onClick={this.props.onLeftClick}
-                src="./img/babymarket-back-arrow-white.png"
+                src="/img/babymarket-back-arrow-white.png"
                 className="tc-navigation-left"
             />
 

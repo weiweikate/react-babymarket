@@ -44,7 +44,6 @@ export default class RequestReadFactory {
         return req;
     }
 
-
     //积分查询
     static pointUploadRead(theId){
         let operation = Operation.sharedInstance().pointReadOperation;
@@ -277,6 +276,24 @@ export default class RequestReadFactory {
         let req = new RequestRead(bodyParameters);
         req.name = '宝贝码头 退款原因枚举';//用于日志输出
         // req.items = ['Name'];
+        return req;
+    }
+
+    //宝贝码头省市区选择
+    static bmAreaListRead(level = 1,parentId){
+        let operation = Operation.sharedInstance().bmAreaRead;
+        let condition = "${CJS} = " + level + " && ${ParentId} = '" + parentId + "'";
+        if (window.Tool.isEmptyStr(parentId)) {
+            condition = "${CJS} = " + level;
+        }
+        let bodyParameters =  {
+            "Operation":operation,
+            "Condition":condition,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '宝贝码头省市区选择';//用于日志输出
+        req.items = ["Id", "CJS", "ZJS", "FullName", "Name"];
+
         return req;
     }
 }

@@ -17,7 +17,7 @@ export default class BabymarketDownloadMobile extends Component {
         return <div className="bm-down-mobile">
             <img
                 className="bm-down-mobile-bg"
-                src="./img/babymarket-screenshot-mobile.jpg"
+                src="/img/babymarket-screenshot-mobile.jpg"
             />
 
             <BabymarketDownloadMobileBtn

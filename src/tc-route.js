@@ -27,6 +27,10 @@ import BabymarketWallet from './pages/babymarket/wallet/babymarket-wallet';
 import BabymarketRefund from './pages/babymarket/refund/babymarket-refund';
 import BabymarketRefundFinish from './pages/babymarket/refund/babymarket-refund-finish';
 
+import BMAddAddress from './pages/babymarket/web-order/address/bm-add-address';
+import BMConfirmOrder from './pages/babymarket/web-order/confirm-order/bm-confirm-order';
+import BMPayFinish from './pages/babymarket/web-order/pay-finish/bm-pay-finish';
+import ProvinceSelect from './pages/babymarket/web-order/province-select/province-select';
 
 export default function initRoute() {
     console.info('start initRoute');
@@ -94,6 +98,38 @@ export default function initRoute() {
     else if ('refund-finish' === action){
         ReactDOM.render(<BabymarketRefundFinish/>, root);
     }
+
+    /**
+     * 新增地址
+     */
+    else if ('add-address' === action) {
+        ReactDOM.render(<BMAddAddress/>, root);
+    }
+
+    /**
+     * 确认订单
+     */
+    else if ('confirm-order' === action ){
+        ReactDOM.render(<BMConfirmOrder/>, root);
+    }
+
+    /**
+     * 支付成功
+     */
+    else if ('pay-finish' === action ){
+        ReactDOM.render(<BMPayFinish/>, root);
+    }
+
+    /**
+     * 省市区选择
+     */
+    else if ('province-select' === action){
+        ReactDOM.render(<ProvinceSelect/>,root);
+    }
+
+    /**
+     * router
+     */
     else if ('router' === action) {
         ReactDOM.render(<WebOrderIndex/>, root);
     }
@@ -114,7 +150,9 @@ export default function initRoute() {
     /**
      * 加载魔窗Mlink配置
      */
-    setTimeout(()=> {
-        window.loadMlink();
-    },1000);
+    if (window.inApp) {
+        setTimeout(()=> {
+            window.loadMlink();
+        },1000);
+    }
 }

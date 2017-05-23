@@ -12,6 +12,7 @@ import {
 import BMAddAddress from './pages/babymarket/web-order/address/bm-add-address';
 import BMConfirmOrder from './pages/babymarket/web-order/confirm-order/bm-confirm-order';
 import BMPayFinish from './pages/babymarket/web-order/pay-finish/bm-pay-finish';
+import ProvinceSelect from './pages/babymarket/web-order/province-select/province-select';
 
 export default class WebOrderIndex extends React.Component{
     render(){
@@ -19,9 +20,10 @@ export default class WebOrderIndex extends React.Component{
             <Router>
                 <div>
                     <Route exact path="/" component={BMAddAddress}/>
-                    <Route path="/address/add" component={BMAddAddress}/>
-                    <Route path="/order/confirm" component={BMConfirmOrder}/>
-                    <Route path="/pay/finish" component={BMPayFinish}/>
+                    <Route path="/address-add" component={BMAddAddress}/>
+                    <Route path="/order-confirm" component={BMConfirmOrder}/>
+                    <Route path="/pay-finish" component={BMPayFinish}/>
+                    <Route path="/province-select" component={ProvinceSelect}/>
                 </div>
             </Router>
         );
