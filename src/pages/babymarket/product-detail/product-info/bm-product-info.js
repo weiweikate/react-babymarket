@@ -101,6 +101,13 @@ export default class BMProductInfo extends Component {
     }
 
     buyBtnClicked(){
+        let {Storage:s} = window;
+        let {product:p} = this.props;
+        s.write('product-id',p.Id);
+        s.write('product-imgId',p.ImgId);
+        s.write('product-price',p.SalePrice);
+        s.write('product-title',p.ShowName);
+
         window.location.href = window.Tool.newHrefWithAction('add-address');
     }
 

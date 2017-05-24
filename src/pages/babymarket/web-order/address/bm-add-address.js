@@ -58,6 +58,11 @@ export default class BMAddAddress extends React.Component{
             Tool.showAlert('请填写详细地址');
             return;
         }
+        this.submit();
+    }
+
+    submit(){
+        window.location.href = window.Tool.newHrefWithAction('confirm-order');
     }
 
     onLeftClick(){

@@ -26,8 +26,16 @@ export default class BabymarketRefundFinish extends React.Component{
         }
         else
         {
-            //todo
-            this.refundId = '';
+            let orderId = window.Tool.getURLParameter('orderId');
+            let r = window.RequestReadFactory.bmRefundRecordIdRead(orderId);
+            let self = this;
+            r.finishBlock = (req,data) => {
+                if (data && window.Tool.isValidStr(data.Id)) {
+                    self.refundId = data.Id;
+                    self.cancelRequest();
+                }
+            };
+            r.start();
         }
     }
 

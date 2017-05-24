@@ -279,6 +279,20 @@ export default class RequestReadFactory {
         return req;
     }
 
+    //获取退款记录id
+    static bmRefundRecordIdRead(orderId){
+        let operation = Operation.sharedInstance().bmRefundRead;
+        let bodyParameters =  {
+            "Operation":operation,
+            "MaxCount":1,
+            "OrderId":orderId
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '宝贝码头 获取退款记录id';//用于日志输出
+        req.items = ['Id'];
+        return req;
+    }
+
     //宝贝码头省市区选择
     static bmAreaListRead(level = 1,parentId){
         let operation = Operation.sharedInstance().bmAreaRead;

@@ -85,6 +85,8 @@ export default class BabymarketRefund extends React.Component{
         let r = window.RequestWriteFactory.bmRefund(this.refundId,orderId,this.state._selectedReason.Id,this.state._refundDes);
         r.finishBlock = (req) =>
         {
+            window.JSBridge.sendDataToNative(null,'refundSuccess');
+
             let location = window.location;
             let newSearch = location.search.replace('action=refund','action=refund-finish');
             newSearch = newSearch + '&refundId=' + this.refundId;

@@ -101,6 +101,7 @@ export default class Operation{
         this.bmRefundReasonRead = 'd8f2d996-53f4-0d49-2b4a-3e7601740c18';
 
         //退款
+        this.bmRefundRead = '18525e79-8689-4e57-9f1f-a77500182f04';
         this.bmRefundWrite = 'a6998041-52b6-0a29-30cf-3e7800b26949';
         this.bmRefundDelete = '88c79a35-f915-473d-b8c3-a77500185b8c';
 
