@@ -4,6 +4,7 @@
 import React from 'react';
 
 import ReactPullLoad,{ STATS } from 'react-pullload';
+import {Spinner} from 'react-activity';
 
 export default class TCBaseComponet extends React.Component{
 
@@ -14,6 +15,7 @@ export default class TCBaseComponet extends React.Component{
         this.state = {
             data:{},
             itemDatas:[],
+            showLoading:false
         };
         this.inheritStateFromSuper();
     }
@@ -38,6 +40,22 @@ export default class TCBaseComponet extends React.Component{
      */
     onLeftClick(){
         window.JSBridge.sendDataToNative(null,'leftNavigationBarButtonClicked');
+    }
+
+    showLoading(){
+        this.setState({
+            showLoading:true
+        });
+    }
+
+    hideLoading(){
+        this.setState({
+            showLoading:false
+        });
+    }
+
+    loadingComponents(){
+        return <Spinner style={this.state.showLoading ? styles.showLoading : styles.hideLoading} />
     }
 
     requestData(){
@@ -77,6 +95,19 @@ export default class TCBaseComponet extends React.Component{
     }
 
     render(){
-        return <div></div>
+        return <div>
+
+        </div>
+    }
+}
+
+const styles = {
+    showLoading:{
+        position:'fixed',
+        top:'50%',
+        left:'50%',
+    },
+    hideLoading:{
+        display:'none',
     }
 }

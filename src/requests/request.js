@@ -54,6 +54,9 @@ export default class Request {
         //要返回的字段
         this.items = [];
 
+        //请求发生的容器，用来显示indicator
+        this.container = null;
+
         //成功回调
         this.finishBlock = (req,firstData) => {};
 
@@ -113,6 +116,7 @@ export default class Request {
                 Tool.showAlert(error);
             }
             that.completeBlock(that);
+            that.hideLoading();
         }).catch(function(err) {
             that.tryCount ++;
             console.debug('请求出错catch：'+err);
@@ -130,6 +134,7 @@ export default class Request {
                 Tool.showAlert('请求失败，请稍后重试')
             }
             that.completeBlock(that);
+            that.hideLoading();
         });
 
         //common
@@ -139,7 +144,22 @@ export default class Request {
         console.debug(JSON.stringify(this._body));
         console.debug(this._body);
         console.debug('------------------------------\n\n\n');
+
+        //显示indicator
+        this.showLoading();
         return this;
+    }
+
+    showLoading(){
+        if (window.inApp && Tool.isValidObject(this.container) && Tool.isFunction(this.container.showLoading)) {
+            this.container.showLoading();
+        }
+    }
+
+    hideLoading(){
+        if (window.inApp && Tool.isValidObject(this.container) && Tool.isFunction(this.container.hideLoading)) {
+            this.container.hideLoading();
+        }
     }
 
     //拼接url

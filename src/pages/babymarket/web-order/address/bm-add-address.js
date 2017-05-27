@@ -6,19 +6,24 @@ import React from 'react';
 import TCNavigationBar from '../../../common/nav/tc-navigation-bar';
 import BMAddAddressItem from './item/bm-add-address-item';
 
+import TCBaseComponet from '../../../common/tc-base-componet';
 
-
-export default class BMAddAddress extends React.Component{
+export default class BMAddAddress extends TCBaseComponet{
     state = {
         name:'',
         phone:'',
         cardId:'',
-        address:'',
-        addressId:'',
-        detail:'',
+        address:'',//省市区的全名
+        addressId:'',//省市区的Id
+        detail:'',//详细地址
     }
     orderId = '';
     memberId = '';
+
+    constructor(){
+        super();
+        this.inheritStateFromSuper();
+    }
 
     componentDidMount() {
 
@@ -84,8 +89,11 @@ export default class BMAddAddress extends React.Component{
                 /**
                  * 新增用户
                  */
-                self.addUser((req) => {
-                    self.addOrder((req) => {
+                self.memberId = window.Tool.guid();
+                window.Storage.setCurrentMemberId(self.memberId);
+
+                self.addOrder((req) => {
+                    self.addUser((req) => {
                         self.addOrderLines((req) => {
                             window.location.href = window.Tool.newHrefWithAction('confirm-order');
                         });
@@ -111,9 +119,8 @@ export default class BMAddAddress extends React.Component{
      */
     addUser(finishBlock){
         let code = window.Tool.getURLParameter('fromId');
-        this.memberId = window.Tool.guid();
-        window.Storage.setCurrentMemberId(this.memberId);
-        let add = window.RequestWriteFactory.bmMemberAdd(this.state.phone,code,this.memberId);
+
+        let add = window.RequestWriteFactory.bmMemberAdd(this.state.phone,code,this.memberId,this.orderId);
         add.finishBlock = finishBlock;
         add.start();
     }
@@ -123,11 +130,22 @@ export default class BMAddAddress extends React.Component{
      * @param finishBlock
      */
     addOrder(finishBlock){
+        let {state} = this;
         this.orderId = window.Tool.guid();
         window.Storage.write('orderId',this.orderId);
 
-        let r = window.RequestWriteFactory.bmOrderAdd(this.orderId);
+        let r = window.RequestWriteFactory.bmOrderAdd(
+            this.orderId,
+            this.memberId,
+            state.addressId,
+            state.name,
+            state.phone,
+            state.address,
+            state.cardId
+        );
+
         r.finishBlock = finishBlock;
+        r.container = this;
         r.start();
     }
 
@@ -139,6 +157,10 @@ export default class BMAddAddress extends React.Component{
         let {Storage:s} = window;
         let productId = s.read('product-id');
         let price = s.read('product-price');
+
+        //todo test
+        price = '0.01';
+
         let r = window.RequestWriteFactory.bmOrderLinesAdd(this.orderId,productId,'1',price);
         r.finishBlock = finishBlock;
         r.start();
@@ -200,6 +222,8 @@ export default class BMAddAddress extends React.Component{
                     onRightClick={this.onRightClick.bind(this)}
                     onLeftClick={this.onLeftClick.bind(this)}
                 />
+
+                {this.loadingComponents()}
 
                 <div style={styles.main}>
 

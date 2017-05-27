@@ -116,7 +116,8 @@ export default class Operation{
         this.bmOrderLineWrite = "6a5ba01b-d63c-0e45-230f-3c19005015b1"
         this.bmOrderWrite = "c65c46b6-b12e-0e57-28fe-3c1900223872"
         this.bmOrderDelete = "8f93f253-7223-091e-1d91-3c1a0030ac72"
-        this.bmOrderRead = "481f0766-998d-003c-1727-3c1701e15fcb"
+        // this.bmOrderRead = "481f0766-998d-003c-1727-3c1701e15fcb"
+        this.bmOrderRead = "02926fbb-1e62-033c-3390-3c1a01c81ad1"
         this.bmOrderModify = "51edceb5-4d37-0d8b-1043-3c1a01f6b85e"//
 
         /*****************************************************************************/

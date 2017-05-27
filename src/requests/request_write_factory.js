@@ -212,7 +212,7 @@ export default class RequestWriteFactory {
 
     //宝贝码头 创建用户
     //todo
-    static bmMemberAdd(phone,code,memberId){
+    static bmMemberAdd(phone,code,memberId,orderId){
         let operation = Operation.sharedInstance().bmMemberAdd;
         let status = Network.sharedInstance().statusNew;
 
@@ -221,6 +221,7 @@ export default class RequestWriteFactory {
             "Id":memberId,
             "Name":phone,
             "Mobile":phone,
+            "OrderId":orderId,
             "YQM":code,
         };
 
@@ -232,14 +233,23 @@ export default class RequestWriteFactory {
 
     //宝贝码头 创建临时订单
     //todo
-    static bmOrderAdd(orderId){
-        let operation = Operation.sharedInstance().bmOrderRead;
+    static bmOrderAdd(orderId,memberId,districtId,name,mobile,addressDetail,cardId){
+        let operation = Operation.sharedInstance().bmOrderWrite;
         let status = Network.sharedInstance().statusNew;
 
         let params = {
             "Operation":operation,
             "Id":orderId,
+            "MemberId":memberId,
+            "DistrictId":districtId,
+            "Consignee":name,
+            "Mobile":mobile,
+            "Address":addressDetail,
         };
+
+        if (window.Tool.isValidStr(cardId)) {
+            params['PurchaseIDCard'] = cardId;
+        }
 
         let req = new RequestWrite(status,'Order',params,null);
         req.name = '宝贝码头 创建临时订单';
