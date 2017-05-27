@@ -209,6 +209,80 @@ export default class RequestWriteFactory {
 
         return req;
     }
+
+    //宝贝码头 创建用户
+    //todo
+    static bmMemberAdd(phone,code,memberId){
+        let operation = Operation.sharedInstance().bmMemberAdd;
+        let status = Network.sharedInstance().statusNew;
+
+        let params = {
+            "Operation":operation,
+            "Id":memberId,
+            "Name":phone,
+            "Mobile":phone,
+            "YQM":code,
+        };
+
+        let req = new RequestWrite(status,'Member',params,null);
+        req.name = '宝贝码头 创建用户';
+
+        return req;
+    }
+
+    //宝贝码头 创建临时订单
+    //todo
+    static bmOrderAdd(orderId){
+        let operation = Operation.sharedInstance().bmOrderRead;
+        let status = Network.sharedInstance().statusNew;
+
+        let params = {
+            "Operation":operation,
+            "Id":orderId,
+        };
+
+        let req = new RequestWrite(status,'Order',params,null);
+        req.name = '宝贝码头 创建临时订单';
+
+        return req;
+    }
+
+    //宝贝码头 修改并激活订单
+    //todo
+    static bmOrderActive(){
+        let operation = Operation.sharedInstance().bmOrderModify;
+        let status = Network.sharedInstance().statusExisted;
+
+        let params = {
+            "Operation":operation,
+        };
+
+        let req = new RequestWrite(status,'Order',params,null);
+        req.name = '宝贝码头 修改并激活订单';
+
+        return req;
+    }
+
+    //宝贝码头 增加订单明细
+    //todo
+    static bmOrderLinesAdd(orderId,productId,count,price){
+        let operation = Operation.sharedInstance().bmOrderLineWrite;
+        let status = Network.sharedInstance().statusNew;
+
+        let params = {
+            "Operation":operation,
+            "OrderId":orderId,
+            "MemberId":window.Storage.currentMemberId(),
+            "ProductId":productId,
+            "Qnty":count,
+            "Price":price,
+        };
+
+        let req = new RequestWrite(status,'Order_Line',params,null);
+        req.name = '宝贝码头 增加订单明细';
+
+        return req;
+    }
 }
 
 

@@ -6,6 +6,8 @@ import React from 'react';
 import TCNavigationBar from '../../../common/nav/tc-navigation-bar';
 import BMAddAddressItem from './item/bm-add-address-item';
 
+
+
 export default class BMAddAddress extends React.Component{
     state = {
         name:'',
@@ -15,6 +17,8 @@ export default class BMAddAddress extends React.Component{
         addressId:'',
         detail:'',
     }
+    orderId = '';
+    memberId = '';
 
     componentDidMount() {
 
@@ -61,8 +65,83 @@ export default class BMAddAddress extends React.Component{
         this.submit();
     }
 
+    /**
+     * 提交
+     */
     submit(){
-        window.location.href = window.Tool.newHrefWithAction('confirm-order');
+        let {state} = this;
+        let self = this;
+
+        /**
+         * 检查手机号是否已注册
+         */
+        this.checkPhone((req,data) => {
+            if (window.Tool.isValidObject(data)) {
+                window.Tool.showAlert('该手机号已注册，请使用宝贝码头App下单');
+            }
+            else
+            {
+                /**
+                 * 新增用户
+                 */
+                self.addUser((req) => {
+                    self.addOrder((req) => {
+                        self.addOrderLines((req) => {
+                            window.location.href = window.Tool.newHrefWithAction('confirm-order');
+                        });
+                    });
+                });
+            }
+        });
+    }
+
+    /**
+     * 检查手机号是否已注册
+     */
+    checkPhone(finishBlock){
+        let {state} = this;
+        let r = window.RequestReadFactory.bmMemberInfoReadByPhone(state.phone);
+        r.finishBlock = finishBlock;
+        r.start();
+    }
+
+    /**
+     * 新增用户
+     * @param finishBlock
+     */
+    addUser(finishBlock){
+        let code = window.Tool.getURLParameter('fromId');
+        this.memberId = window.Tool.guid();
+        window.Storage.setCurrentMemberId(this.memberId);
+        let add = window.RequestWriteFactory.bmMemberAdd(this.state.phone,code,this.memberId);
+        add.finishBlock = finishBlock;
+        add.start();
+    }
+
+    /**
+     * 新增临时订单
+     * @param finishBlock
+     */
+    addOrder(finishBlock){
+        this.orderId = window.Tool.guid();
+        window.Storage.write('orderId',this.orderId);
+
+        let r = window.RequestWriteFactory.bmOrderAdd(this.orderId);
+        r.finishBlock = finishBlock;
+        r.start();
+    }
+
+    /**
+     * 添加订单明细
+     * @param finishBlock
+     */
+    addOrderLines(finishBlock){
+        let {Storage:s} = window;
+        let productId = s.read('product-id');
+        let price = s.read('product-price');
+        let r = window.RequestWriteFactory.bmOrderLinesAdd(this.orderId,productId,'1',price);
+        r.finishBlock = finishBlock;
+        r.start();
     }
 
     onLeftClick(){

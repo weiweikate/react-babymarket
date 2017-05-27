@@ -310,6 +310,36 @@ export default class RequestReadFactory {
 
         return req;
     }
+
+    //宝贝码头用户信息读取
+    static bmMemberInfoReadByPhone(phone){
+        let operation = Operation.sharedInstance().bmMemberInfoRead;
+        let condition = "${Mobile} == '"+phone+"'";
+        let bodyParameters =  {
+            "Operation":operation,
+            "Condition":condition,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '宝贝码头用户信息读取';//用于日志输出
+        req.items = ["Id"];
+
+        return req;
+    }
+
+    //宝贝码头订单详情读取
+    static bmOrderDetailRead(orderId){
+        let operation = Operation.sharedInstance().bmOrderRead;
+        let condition = "${Id} == '" + orderId + "'";
+        let bodyParameters =  {
+            "Operation":operation,
+            "Condition":condition,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '宝贝码头订单详情读取';//用于日志输出
+        // req.items = ["Id"];
+
+        return req;
+    }
 }
 
 

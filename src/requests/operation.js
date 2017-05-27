@@ -108,6 +108,17 @@ export default class Operation{
         //区域选择
         this.bmAreaRead = "7e179d1c-ab1c-0352-0a44-393c01c0abf4";
 
+        //用户信息
+        this.bmMemberInfoRead = 'b83b9dc9-5568-0c67-1926-3c1701fb385b';
+        this.bmMemberAdd = '3678dc19-7dcb-020c-26ff-3c1900385fe2';
+
+        //订单
+        this.bmOrderLineWrite = "6a5ba01b-d63c-0e45-230f-3c19005015b1"
+        this.bmOrderWrite = "c65c46b6-b12e-0e57-28fe-3c1900223872"
+        this.bmOrderDelete = "8f93f253-7223-091e-1d91-3c1a0030ac72"
+        this.bmOrderRead = "481f0766-998d-003c-1727-3c1701e15fcb"
+        this.bmOrderModify = "51edceb5-4d37-0d8b-1043-3c1a01f6b85e"//
+
         /*****************************************************************************/
         /********************            宝贝码头                ***********************/
         /*****************************************************************************/

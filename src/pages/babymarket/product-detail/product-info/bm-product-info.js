@@ -107,6 +107,7 @@ export default class BMProductInfo extends Component {
         s.write('product-imgId',p.ImgId);
         s.write('product-price',p.SalePrice);
         s.write('product-title',p.ShowName);
+        s.write('product-subtitle',p.Subtitle);
 
         window.location.href = window.Tool.newHrefWithAction('add-address');
     }
