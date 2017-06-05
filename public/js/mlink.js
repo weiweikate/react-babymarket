@@ -2,7 +2,7 @@
  * Created by coin on 3/31/17.
  */
 
-let loadMlink = () => {
+let loadMlink = function () {
     // var btn_1 = document.querySelector("a#invite_download0");
     // var btn_2 = document.querySelector("a#invite_download1");
     //

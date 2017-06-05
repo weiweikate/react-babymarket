@@ -152,7 +152,9 @@ export default function initRoute() {
      */
     if (window.inApp) {
         setTimeout(()=> {
-            window.loadMlink();
+            if (window.Tool.isFunction(window.loadMlink)) {
+                window.loadMlink();
+            }
         },1000);
     }
 }

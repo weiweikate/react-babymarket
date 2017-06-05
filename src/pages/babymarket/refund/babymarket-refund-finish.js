@@ -27,6 +27,10 @@ export default class BabymarketRefundFinish extends React.Component{
         else
         {
             let orderId = window.Tool.getURLParameter('orderId');
+            if (window.Tool.isEmptyStr(orderId)) {
+                window.Tool.showAlert('无法获取orderId');
+                return;
+            }
             let r = window.RequestReadFactory.bmRefundRecordIdRead(orderId);
             let self = this;
             r.finishBlock = (req,data) => {
@@ -34,12 +38,19 @@ export default class BabymarketRefundFinish extends React.Component{
                     self.refundId = data.Id;
                     self.cancelRequest();
                 }
+                else {
+                    window.Tool.showAlert('无法获取退款信息');
+                }
             };
             r.start();
         }
     }
 
     cancelRequest(){
+        if (window.Tool.isEmptyStr(this.refundId)) {
+            window.Tool.showAlert('无法获取refundId');
+            return;
+        }
         let r = window.RequestWriteFactory.bmRefundCancel(this.refundId);
         r.finishBlock = (req) => {
             window.Tool.showAlert('取消成功');

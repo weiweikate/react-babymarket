@@ -284,12 +284,12 @@ export default class RequestReadFactory {
         let operation = Operation.sharedInstance().bmRefundRead;
         let bodyParameters =  {
             "Operation":operation,
-            "MaxCount":1,
+            "MaxCount":9,
             "OrderId":orderId
         };
         let req = new RequestRead(bodyParameters);
         req.name = '宝贝码头 获取退款记录id';//用于日志输出
-        req.items = ['Id'];
+        req.items = ['Id','OrderId','Deleted'];
         return req;
     }
 
