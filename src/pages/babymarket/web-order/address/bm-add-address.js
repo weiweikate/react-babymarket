@@ -26,10 +26,11 @@ export default class BMAddAddress extends TCBaseComponet{
     }
 
     componentDidMount() {
-
+        console.log('componentDidMount');
     }
 
     componentWillMount() {
+        console.log('componentWillMount');
         let {Storage} = window;
         let addressId = Storage.read('address-id');
         let addressName = Storage.read('address-name');
@@ -92,10 +93,12 @@ export default class BMAddAddress extends TCBaseComponet{
                 self.memberId = window.Tool.guid();
                 window.Storage.setCurrentMemberId(self.memberId);
 
+                self.showLoading();
                 self.addOrder((req) => {
                     self.addUser((req) => {
                         self.addOrderLines((req) => {
                             window.location.href = window.Tool.newHrefWithAction('confirm-order');
+                            self.hideLoading();
                         });
                     });
                 });
@@ -191,13 +194,6 @@ export default class BMAddAddress extends TCBaseComponet{
         Storage.write('card-id',value);
     }
 
-    addressOnChange(value){
-        this.setState({
-            address:value
-        });
-        Storage.write('address-name',value);
-    }
-
     detailOnChange(value){
         this.setState({
             detail:value
@@ -223,7 +219,6 @@ export default class BMAddAddress extends TCBaseComponet{
                     onLeftClick={this.onLeftClick.bind(this)}
                 />
 
-                {this.loadingComponents()}
 
                 <div style={styles.main}>
 
@@ -250,7 +245,6 @@ export default class BMAddAddress extends TCBaseComponet{
 
                     <BMAddAddressItem
                         value={this.state.address}
-                        itemOnChange={this.addressOnChange.bind(this)}
                         title="省市区："
                         placeholder="填写正确的省市区"
                         itemOnClick={this.itemOnClick.bind(this)}
@@ -264,6 +258,7 @@ export default class BMAddAddress extends TCBaseComponet{
                         placeholder="填写详细的收货地址"
                     />
 
+                    {this.loadingComponents()}
                 </div>
 
             </div>

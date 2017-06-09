@@ -5,6 +5,8 @@ import React from 'react';
 
 import ReactPullLoad,{ STATS } from 'react-pullload';
 import {Spinner} from 'react-activity';
+import Dots from 'react-activity/lib/Dots';
+import '../../../node_modules/react-activity/lib/Spinner/Spinner.css';
 
 export default class TCBaseComponet extends React.Component{
 
@@ -55,7 +57,9 @@ export default class TCBaseComponet extends React.Component{
     }
 
     loadingComponents(){
-        return <Spinner style={this.state.showLoading ? styles.showLoading : styles.hideLoading} />
+        return <div style={this.state.showLoading ? styles.showLoading : styles.hideLoading}>
+            <Spinner/>
+        </div>
     }
 
     requestData(){
@@ -103,11 +107,12 @@ export default class TCBaseComponet extends React.Component{
 
 const styles = {
     showLoading:{
+        display:'flex',
         position:'fixed',
         top:'50%',
         left:'50%',
     },
     hideLoading:{
         display:'none',
-    }
+    },
 }

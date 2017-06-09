@@ -151,13 +151,13 @@ export default class Request {
     }
 
     showLoading(){
-        if (window.inApp && Tool.isValidObject(this.container) && Tool.isFunction(this.container.showLoading)) {
+        if (window.inApp === false && Tool.isValidObject(this.container) && Tool.isFunction(this.container.showLoading)) {
             this.container.showLoading();
         }
     }
 
     hideLoading(){
-        if (window.inApp && Tool.isValidObject(this.container) && Tool.isFunction(this.container.hideLoading)) {
+        if (window.inApp === false && Tool.isValidObject(this.container) && Tool.isFunction(this.container.hideLoading)) {
             this.container.hideLoading();
         }
     }

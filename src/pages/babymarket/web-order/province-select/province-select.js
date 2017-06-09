@@ -44,6 +44,7 @@ export default class ProvinceSelect extends React.Component {
 
     componentDidMount() {
         this.requestData();
+
     }
 
     /**
@@ -66,7 +67,8 @@ export default class ProvinceSelect extends React.Component {
 
                 window.Storage.write('address-id',item.Id);
                 window.Storage.write('address-name',item.FullName);
-                window.history.back();
+                // window.history.back();
+                window.location.href = window.Tool.newHrefWithAction('add-address');
             }
             else{
                 let newLevel = this.state.currentLevel + 1;
