@@ -58,6 +58,16 @@ export default class BabymarketProductDetail extends Component {
             if (window.Tool.isValidObject(firstData)) {
                 let images = this.state.images;
                 images.unshift(window.Tool.imageURLForId(firstData.ImgId));
+
+                if (window.Storage.didLogin()) {
+                    let tempPrice = firstData.SalePrice;
+                    firstData.SalePrice = firstData.Old_Price;
+                    firstData.Old_Price = tempPrice;
+                }
+                else{
+                    firstData.Old_Price = "0";
+                }
+
                 self.setState({
                     product:firstData,
                     images:images

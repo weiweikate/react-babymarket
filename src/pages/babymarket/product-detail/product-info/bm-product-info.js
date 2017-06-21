@@ -73,8 +73,15 @@ export default class BMProductInfo extends Component {
         console.log('onTitleTouchEnd');
     }
 
+    pricePrefix(){
+        return window.Storage.didLogin() ? "老友价": "";
+    }
     price(){
         return this.state.isInside ? this.props.product.SalePrice:this.props.product.PriceInside;
+    }
+
+    oldPrice(){
+        return window.Storage.didLogin() ? '￥' + this.props.product.SalePrice : "";
     }
 
     importIcon(){
@@ -124,7 +131,8 @@ export default class BMProductInfo extends Component {
             </div>
             <p className="bmpi-des">{this.props.product.Subtitle}</p>
             <div className="bmpi-price-container">
-                <span className="bmpi-price">￥{this.price()}</span>
+                <span className="bmpi-price">{this.pricePrefix()}￥{this.price()}</span>
+                <span className="bmpi-old-price">{this.oldPrice()}</span>
                 {this.buyButton()}
             </div>
             <div className="bmpi-country-base">
