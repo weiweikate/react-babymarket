@@ -50,7 +50,7 @@ export default class BMDownloadBar extends Component{
                 <img src="./img/close-button.png" onClick={this.closeOnClick.bind(this)} className="bmdb-close"/>
                 <img src="./img/AppIcon.png" className="bmdb-icon"/>
                 <div className="bmdb-text-container">
-                    <span className="bmdb-title">宝贝码头</span>
+                    <span className="bmdb-title">老友码头</span>
                     {/*<span className="bmdb-des">描述</span>*/}
                 </div>
             </div>

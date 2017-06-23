@@ -31,7 +31,7 @@ window.TCBaseComponet = TCBaseComponet;
  * @type {boolean}
  */
 window.isProduction = false;
-// window.isProduction = true;
+window.isProduction = true;
 
 /*
  * 是否是https

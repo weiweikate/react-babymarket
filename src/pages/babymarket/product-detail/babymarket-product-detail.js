@@ -61,11 +61,11 @@ export default class BabymarketProductDetail extends Component {
 
                 if (window.Storage.didLogin()) {
                     let tempPrice = firstData.SalePrice;
-                    firstData.SalePrice = firstData.Old_Price;
-                    firstData.Old_Price = tempPrice;
+                    firstData.SalePrice = firstData.LYPrice;
+                    firstData.LYPrice = tempPrice;
                 }
                 else{
-                    firstData.Old_Price = "0";
+                    firstData.LYPrice = "0";
                 }
 
                 self.setState({

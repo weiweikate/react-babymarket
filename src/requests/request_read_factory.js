@@ -110,7 +110,7 @@ export default class RequestReadFactory {
         };
         let req = new RequestRead(bodyParameters);
         req.name = '宝贝码头商品详情';//用于日志输出
-        req.items = ['Id','ShowName','Old_Price','SalePrice','ImgId','Warehouse','Des1','Des','Tax','Subtitle','NationalKey','StoreId','TaxRate','Import','PriceInside'];
+        req.items = ['Id','ShowName','LYPrice','SalePrice','ImgId','Warehouse','Des1','Des','Tax','Subtitle','NationalKey','StoreId','TaxRate','Import','PriceInside'];
         return req;
     }
 
@@ -130,7 +130,7 @@ export default class RequestReadFactory {
         return req;
     }
 
-    //宝贝码头 商品的国家信息
+    //老友码头 商品的国家信息
     static productNationRead(theKey){
         let operation = Operation.sharedInstance().bmNationReadOperation;
         let bodyParameters =  {
@@ -140,12 +140,12 @@ export default class RequestReadFactory {
             "StartIndex":0
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头 商品的国家信息';//用于日志输出
+        req.name = '老友码头 商品的国家信息';//用于日志输出
         req.items = ['Name'];
         return req;
     }
 
-    //宝贝码头 动态详情
+    //老友码头 动态详情
     static dynamicDetailRead(theId){
         let operation = Operation.sharedInstance().bmDynamicDetailReadOperation;
         let bodyParameters =  {
@@ -164,12 +164,12 @@ export default class RequestReadFactory {
             ]
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头 动态详情';//用于日志输出
+        req.name = '老友码头 动态详情';//用于日志输出
         // req.items = ['Name'];
         return req;
     }
 
-    //宝贝码头 产品相关动态
+    //老友码头 产品相关动态
     static productRelativeDynamicRead(productId){
         let operation = Operation.sharedInstance().bmDynamicDetailReadOperation;
         let bodyParameters =  {
@@ -180,12 +180,12 @@ export default class RequestReadFactory {
             "StartIndex":0,
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头 相关动态';//用于日志输出
+        req.name = '老友码头 相关动态';//用于日志输出
         // req.items = ['Name'];
         return req;
     }
 
-    //宝贝码头 运费
+    //老友码头 运费
     static expressRuleRead(warehouseId,city){
         let operation = Operation.sharedInstance().bmExpressRuleReadOperation;
         let bodyParameters =  {
@@ -195,12 +195,12 @@ export default class RequestReadFactory {
             "StartIndex":0
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头 运费';//用于日志输出
+        req.name = '老友码头 运费';//用于日志输出
         req.items = ['Express_Fee'];
         return req;
     }
 
-    //宝贝码头 动态评论
+    //老友码头 动态评论
     static dynamicDetailCommentsRead(theId,index=0){
         let operation = Operation.sharedInstance().bmDynamicCommentsReadOperation;
         let bodyParameters =  {
@@ -211,12 +211,12 @@ export default class RequestReadFactory {
             "StartIndex":index
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头 动态评论';//用于日志输出
+        req.name = '老友码头 动态评论';//用于日志输出
         // req.items = ['Name'];
         return req;
     }
 
-    //宝贝码头 会员钱包月汇总
+    //老友码头 会员钱包月汇总
     static bmBalanceLogMonthViewRead(theId,index=0){
         let operation = Operation.sharedInstance().bmBalanceLogMonthView;
         let condition = "${MemberId} == '" + theId + "'";
@@ -231,7 +231,7 @@ export default class RequestReadFactory {
             // },
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头 会员钱包月汇总';//用于日志输出
+        req.name = '老友码头 会员钱包月汇总';//用于日志输出
         // req.items = ['Name'];
         return req;
     }
@@ -246,7 +246,7 @@ export default class RequestReadFactory {
             "StartIndex":index
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头 我的奖励';//用于日志输出
+        req.name = '老友码头 我的奖励';//用于日志输出
         // req.items = ['Name'];
         return req;
     }
@@ -261,7 +261,7 @@ export default class RequestReadFactory {
             "StartIndex":index
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头 已省金额';//用于日志输出
+        req.name = '老友码头 已省金额';//用于日志输出
         // req.items = ['Name'];
         return req;
     }
@@ -274,7 +274,7 @@ export default class RequestReadFactory {
             "MaxCount":90,
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头 退款原因枚举';//用于日志输出
+        req.name = '老友码头 退款原因枚举';//用于日志输出
         // req.items = ['Name'];
         return req;
     }
@@ -288,7 +288,7 @@ export default class RequestReadFactory {
             "OrderId":orderId
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头 获取退款记录id';//用于日志输出
+        req.name = '老友码头 获取退款记录id';//用于日志输出
         req.items = ['Id','OrderId','Deleted'];
         return req;
     }

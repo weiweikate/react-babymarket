@@ -53,7 +53,7 @@ export default class Operation{
 
 
         /*****************************************************************************/
-        /********************            宝贝码头                ***********************/
+        /********************            老友码头                ***********************/
         /*****************************************************************************/
         //宝贝码头商品详情
         this.bmProductReadOperation = 'de9362a8-395e-09a4-087d-3c1701f9da63';
@@ -61,23 +61,23 @@ export default class Operation{
         //宝贝码头附件
         this.bmAttachmentsReadOperation = '7eba4898-2f70-05b4-0b17-009a002e71ad';
 
-        //宝贝码头 商品的国家信息
+        //老友码头 商品的国家信息
         this.bmNationReadOperation = 'c5cb5117-b585-0160-2ab2-3c1f0016ec87';
 
-        //宝贝码头 动态详情
+        //老友码头 动态详情
         this.bmDynamicDetailReadOperation = '64c44bb7-8657-0355-3ad9-3c7b004d7aff';
 
-        //宝贝码头 运费
+        //老友码头 运费
         this.bmExpressRuleReadOperation = '91972a34-2e32-0928-156f-3c3501e55857';
 
-        //宝贝码头 收藏动态
+        //老友码头 收藏动态
         this.bmDynamicFavoriteAddOperation = '23183844-883f-04c2-0a27-3c3501c7be16';
-        //宝贝码头 取消收藏
+        //老友码头 取消收藏
         this.bmDynamicFavoriteCancelOperation = '6ad78ca1-4b32-038b-3f48-3c3601d52a16';
 
-        //宝贝码头 动态点赞
+        //老友码头 动态点赞
         this.bmDynamicLikeAddOperation = '8df129ef-2b80-08c1-0542-3c7501f0693a';
-        //宝贝码头 动态点赞 取消
+        //老友码头 动态点赞 取消
         this.bmDynamicLikeCancelOperation = '7bc68905-905c-4a9d-bf8c-a58a01602986';
 
         //动态评论点赞
@@ -121,7 +121,7 @@ export default class Operation{
         this.bmOrderModify = "51edceb5-4d37-0d8b-1043-3c1a01f6b85e"//
 
         /*****************************************************************************/
-        /********************            宝贝码头                ***********************/
+        /********************            老友码头                ***********************/
         /*****************************************************************************/
 
 

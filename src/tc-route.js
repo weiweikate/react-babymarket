@@ -16,7 +16,7 @@ import BabymarketDownloadPC from './pages/download/babymarket/babymarket-downloa
 import BabymarketDownloadMobile from './pages/download/babymarket/babymarket-download-mobile';
 
 /**
- * 宝贝码头
+ * 老友码头
  */
 import BabymarketDynamicDetail from './pages/babymarket/dynamic-detail/babymarket-dynamic-detail';
 import BabymarketProductDetail from './pages/babymarket/product-detail/babymarket-product-detail';

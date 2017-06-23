@@ -56,16 +56,16 @@ export default class BMProductInfo extends Component {
     }
 
     onTitleTouchStart(){
-        this.isHoldingTitle = true;
-        let self = this;
-        setTimeout(() => {
-            console.log('setTimeout');
-            if (self.isHoldingTitle){
-                self.isHoldingTitle = false;
-                self.titleClicked();
-            }
-        },2000);
-        console.log('onTitleTouchStart');
+        // this.isHoldingTitle = true;
+        // let self = this;
+        // setTimeout(() => {
+        //     console.log('setTimeout');
+        //     if (self.isHoldingTitle){
+        //         self.isHoldingTitle = false;
+        //         self.titleClicked();
+        //     }
+        // },2000);
+        // console.log('onTitleTouchStart');
     }
 
     onTitleTouchEnd(){
@@ -74,14 +74,17 @@ export default class BMProductInfo extends Component {
     }
 
     pricePrefix(){
-        return window.Storage.didLogin() ? "老友价": "";
+        return window.Storage.didLogin() ? "（老友专享）": "";
     }
     price(){
-        return this.state.isInside ? this.props.product.SalePrice:this.props.product.PriceInside;
+        return this.props.product.SalePrice;
     }
 
     oldPrice(){
-        return window.Storage.didLogin() ? '￥' + this.props.product.SalePrice : "";
+        if (this.props.product.LYPrice === this.price() || this.props.product.LYPrice == 0) {
+            return "";
+        }
+        return window.Storage.didLogin() ? '￥' + this.props.product.LYPrice : "";
     }
 
     importIcon(){
@@ -131,7 +134,7 @@ export default class BMProductInfo extends Component {
             </div>
             <p className="bmpi-des">{this.props.product.Subtitle}</p>
             <div className="bmpi-price-container">
-                <span className="bmpi-price">{this.pricePrefix()}￥{this.price()}</span>
+                <span className="bmpi-price">￥{this.price()} {this.pricePrefix()}</span>
                 <span className="bmpi-old-price">{this.oldPrice()}</span>
                 {this.buyButton()}
             </div>

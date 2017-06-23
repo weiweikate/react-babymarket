@@ -174,7 +174,7 @@ export default class RequestWriteFactory {
         return req;
     }
 
-    //宝贝码头 退款
+    //老友码头 退款
     static bmRefund(refundId,orderId,reasonId,reason=''){
         let operation = Operation.sharedInstance().bmRefundWrite;
         let status = Network.sharedInstance().statusNew;
@@ -188,12 +188,12 @@ export default class RequestWriteFactory {
         };
 
         let req = new RequestWrite(status,'Refund',params,null);
-        req.name = '宝贝码头 退款';
+        req.name = '老友码头 退款';
 
         return req;
     }
 
-    //宝贝码头 取消退款
+    //老友码头 取消退款
     static bmRefundCancel(refundId){
         let operation = Operation.sharedInstance().bmRefundDelete;
         let status = Network.sharedInstance().statusExisted;
@@ -205,12 +205,12 @@ export default class RequestWriteFactory {
         };
 
         let req = new RequestWrite(status,'Refund',params,null);
-        req.name = '宝贝码头 取消退款';
+        req.name = '老友码头 取消退款';
 
         return req;
     }
 
-    //宝贝码头 创建用户
+    //老友码头 创建用户
     //todo
     static bmMemberAdd(phone,code,memberId,orderId){
         let operation = Operation.sharedInstance().bmMemberAdd;
@@ -226,12 +226,12 @@ export default class RequestWriteFactory {
         };
 
         let req = new RequestWrite(status,'Member',params,null);
-        req.name = '宝贝码头 创建用户';
+        req.name = '老友码头 创建用户';
 
         return req;
     }
 
-    //宝贝码头 创建临时订单
+    //老友码头 创建临时订单
     //todo
     static bmOrderAdd(orderId,memberId,districtId,name,mobile,addressDetail,cardId){
         let operation = Operation.sharedInstance().bmOrderWrite;
@@ -252,12 +252,12 @@ export default class RequestWriteFactory {
         }
 
         let req = new RequestWrite(status,'Order',params,null);
-        req.name = '宝贝码头 创建临时订单';
+        req.name = '老友码头 创建临时订单';
 
         return req;
     }
 
-    //宝贝码头 修改并激活订单
+    //老友码头 修改并激活订单
     //todo
     static bmOrderActive(){
         let operation = Operation.sharedInstance().bmOrderModify;
@@ -268,12 +268,12 @@ export default class RequestWriteFactory {
         };
 
         let req = new RequestWrite(status,'Order',params,null);
-        req.name = '宝贝码头 修改并激活订单';
+        req.name = '老友码头 修改并激活订单';
 
         return req;
     }
 
-    //宝贝码头 增加订单明细
+    //老友码头 增加订单明细
     //todo
     static bmOrderLinesAdd(orderId,productId,count,price){
         let operation = Operation.sharedInstance().bmOrderLineWrite;
@@ -289,7 +289,7 @@ export default class RequestWriteFactory {
         };
 
         let req = new RequestWrite(status,'Order_Line',params,null);
-        req.name = '宝贝码头 增加订单明细';
+        req.name = '老友码头 增加订单明细';
 
         return req;
     }
