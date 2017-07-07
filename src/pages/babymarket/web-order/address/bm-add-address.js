@@ -83,7 +83,7 @@ export default class BMAddAddress extends TCBaseComponet{
          */
         this.checkPhone((req,data) => {
             if (window.Tool.isValidObject(data)) {
-                window.Tool.showAlert('该手机号已注册，请使用宝贝码头App下单');
+                window.Tool.showAlert('该手机号已注册，请使用老友码头App下单');
             }
             else
             {

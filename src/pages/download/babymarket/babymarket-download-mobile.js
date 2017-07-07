@@ -17,23 +17,23 @@ export default class BabymarketDownloadMobile extends Component {
         return <div className="bm-down-mobile">
             <img
                 className="bm-down-mobile-bg"
-                src="./img/babymarket-screenshot-mobile.jpg"
+                src="./img/babymarket-screenshot-mobile.png"
             />
 
             <BabymarketDownloadMobileBtn
                 theId='invite_download0'
                 link={this.link()}
                 title='下载Android版'
-                icon='./img/android-icon-white.png'
+                icon='./img/android-icon-black.png'
             />
             <BabymarketDownloadMobileBtn
                 theId='invite_download1'
                 link={this.link()}
                 isLast={true}
                 title='访问App Store'
-                icon='./img/ios-icon-white.png'
+                icon='./img/ios-icon-black.png'
             />
-            <span className="bm-down-mobile-des">会员专属福利App</span>
+            <span className="bm-down-mobile-des">老友好物分享App</span>
         </div>
     }
 }

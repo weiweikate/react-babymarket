@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #b10920;
+    background-color: white;
     border-radius: 5px;
     margin: 3px;
     margin-bottom: 10px;
@@ -11,6 +11,7 @@
     max-width: 400px;
     min-width: 150px;
     z-index:2;
+    border: 1px solid #e8e8e8;
 }
 
 .lastBtn{
@@ -18,15 +19,14 @@
 }
 
 .bm-down-mobile-image{
-    border-color: black;
-    border-width: 1px;
     height: 20px;
     width: 20px;
     margin: 10px;
+    object-fit: contain;
 }
 
 .bm-down-mobile-title{
     display: flex;
-    color: #e6e6e6;
+    color: #747474;
     font-size: 14px;
 }

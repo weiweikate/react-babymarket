@@ -14,7 +14,7 @@
 .bmpi-country-base{
     display: flex;
     flex-direction: row;
-    margin-top: 10px;
+    margin-top: 8px;
     margin-bottom: 8px;
     color: #7798c4;
 }
@@ -34,6 +34,9 @@
 }
 
 .bmpi-price{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     font-size: 17px;
     color: #ab7b0f;
     margin-left: 10px;
@@ -47,11 +50,11 @@
     margin-top: 5px;
     text-decoration:line-through;
 }
+
 .bmpi-title{
-    display: inline;
+    /*display: inline;*/
     font-size: 16px;
-    margin-left: 6px;
-    margin-top: 18px;
+    margin-left: 10px;
     color: #131313;
 }
 
@@ -60,7 +63,7 @@
     color: #585858;
     margin-left: 10px;
     margin-bottom:2px;
-    margin-top: 8px;
+    margin-top: 0px;
 }
 
 .bmpi-express-base{
@@ -94,10 +97,13 @@
     width: 100%;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
 }
 .bmpi-buy-button{
     padding:4px 8px;
     margin-right: 10px;
+    margin-left: 30px;
+    margin-top: 2px;
 
     border: 1px solid red;
     border-radius: 5px;
@@ -105,4 +111,10 @@
     color: white;
 }
 
+.bmpi-price-subfix{
+    display: inline;
+    height: 18px;
+    width: auto;
+    margin:2px 10px 0 4px;
+}
 

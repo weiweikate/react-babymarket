@@ -73,8 +73,8 @@ export default class BMProductInfo extends Component {
         console.log('onTitleTouchEnd');
     }
 
-    pricePrefix(){
-        return window.Storage.didLogin() ? "（老友专享）": "";
+    priceSubfix(){
+        return window.Storage.didLogin() ? <img src="./img/price-subfix.png" className="bmpi-price-subfix"/>: "";
     }
     price(){
         return this.props.product.SalePrice;
@@ -130,11 +130,11 @@ export default class BMProductInfo extends Component {
                 marginTop:10
             }}>
                 {this.importIcon()}
-                <span onTouchStart={this.onTitleTouchStart.bind(this)} onTouchEnd={this.onTitleTouchEnd.bind(this)} className="bmpi-title">{this.props.product.ShowName}</span>
+                <div onTouchStart={this.onTitleTouchStart.bind(this)} onTouchEnd={this.onTitleTouchEnd.bind(this)} className="bmpi-title one-line-ellipsis">{this.props.product.ShowName}</div>
             </div>
             <p className="bmpi-des">{this.props.product.Subtitle}</p>
             <div className="bmpi-price-container">
-                <span className="bmpi-price">￥{this.price()} {this.pricePrefix()}</span>
+                <span className="bmpi-price">￥{this.price()} {this.priceSubfix()}</span>
                 <span className="bmpi-old-price">{this.oldPrice()}</span>
                 {this.buyButton()}
             </div>

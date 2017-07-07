@@ -71,7 +71,7 @@ export default class RequestWriteFactory {
         return req;
     }
 
-    //宝贝码头动态收藏
+    //老友码头动态收藏
     static dynamicFavoriteAdd(dynamicId,favId){
         let operation = Operation.sharedInstance().bmDynamicFavoriteAddOperation;
         let status = Network.sharedInstance().statusNew;
@@ -85,12 +85,12 @@ export default class RequestWriteFactory {
         };
 
         let req = new RequestWrite(status,'Favorite',params,null);
-        req.name = '宝贝码头动态收藏';
+        req.name = '老友码头动态收藏';
 
         return req;
     }
 
-    //宝贝码头动态收藏 取消
+    //老友码头动态收藏 取消
     static dynamicFavoriteCancel(favId){
         let operation = Operation.sharedInstance().bmDynamicFavoriteCancelOperation;
         let status = Network.sharedInstance().statusDelete;
@@ -101,12 +101,12 @@ export default class RequestWriteFactory {
         };
 
         let req = new RequestWrite(status,'Favorite',params,null);
-        req.name = '宝贝码头动态收藏 取消';
+        req.name = '老友码头动态收藏 取消';
 
         return req;
     }
 
-    //宝贝码头动态点赞
+    //老友码头动态点赞
     static dynamicLikeAdd(dynamicId,likeId){
         let operation = Operation.sharedInstance().bmDynamicLikeAddOperation;
         let status = Network.sharedInstance().statusNew;
@@ -118,12 +118,12 @@ export default class RequestWriteFactory {
         };
 
         let req = new RequestWrite(status,'Compliment',params,null);
-        req.name = '宝贝码头动态点赞';
+        req.name = '老友码头动态点赞';
 
         return req;
     }
 
-    //宝贝码头动态点赞 取消
+    //老友码头动态点赞 取消
     static dynamicLikeCancel(likeId){
         let operation = Operation.sharedInstance().bmDynamicLikeCancelOperation;
         let status = Network.sharedInstance().statusExisted;
@@ -135,12 +135,12 @@ export default class RequestWriteFactory {
         };
 
         let req = new RequestWrite(status,'Compliment',params,null);
-        req.name = '宝贝码头动态点赞 取消';
+        req.name = '老友码头动态点赞 取消';
 
         return req;
     }
 
-    //宝贝码头动态评论点赞
+    //老友码头动态评论点赞
     static dynamicCommentLikeAdd(commentId,likeId){
         let operation = Operation.sharedInstance().bmDynamicCommentLikeAddOperation;
         let status = Network.sharedInstance().statusNew;
@@ -152,12 +152,12 @@ export default class RequestWriteFactory {
         };
 
         let req = new RequestWrite(status,'Compliment1',params,null);
-        req.name = '宝贝码头动态评论点赞';
+        req.name = '老友码头动态评论点赞';
 
         return req;
     }
 
-    //宝贝码头动态评论点赞 取消
+    //老友码头动态评论点赞 取消
     static dynamicCommentLikeCancel(likeId){
         let operation = Operation.sharedInstance().bmDynamicCommentLikeCancelOperation;
         let status = Network.sharedInstance().statusExisted;
@@ -169,7 +169,7 @@ export default class RequestWriteFactory {
         };
 
         let req = new RequestWrite(status,'Compliment1',params,null);
-        req.name = '宝贝码头动态评论点赞 取消';
+        req.name = '老友码头动态评论点赞 取消';
 
         return req;
     }

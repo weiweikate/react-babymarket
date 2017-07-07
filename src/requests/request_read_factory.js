@@ -100,7 +100,7 @@ export default class RequestReadFactory {
         return req;
     }
 
-    //宝贝码头商品详情
+    //老友码头商品详情
     static productDetailRead(theId){
         let operation = Operation.sharedInstance().bmProductReadOperation;
         let bodyParameters =  {
@@ -109,7 +109,7 @@ export default class RequestReadFactory {
             "MaxCount":'1',
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头商品详情';//用于日志输出
+        req.name = '老友码头商品详情';//用于日志输出
         req.items = ['Id','ShowName','LYPrice','SalePrice','ImgId','Warehouse','Des1','Des','Tax','Subtitle','NationalKey','StoreId','TaxRate','Import','PriceInside'];
         return req;
     }
@@ -293,7 +293,7 @@ export default class RequestReadFactory {
         return req;
     }
 
-    //宝贝码头省市区选择
+    //老友码头省市区选择
     static bmAreaListRead(level = 1,parentId){
         let operation = Operation.sharedInstance().bmAreaRead;
         let condition = "${CJS} = " + level + " && ${ParentId} = '" + parentId + "'";
@@ -305,13 +305,13 @@ export default class RequestReadFactory {
             "Condition":condition,
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头省市区选择';//用于日志输出
+        req.name = '老友码头省市区选择';//用于日志输出
         req.items = ["Id", "CJS", "ZJS", "FullName", "Name"];
 
         return req;
     }
 
-    //宝贝码头用户信息读取
+    //老友码头用户信息读取
     static bmMemberInfoReadByPhone(phone){
         let operation = Operation.sharedInstance().bmMemberInfoRead;
         let condition = "${Mobile} == '"+phone+"'";
@@ -320,13 +320,13 @@ export default class RequestReadFactory {
             "Condition":condition,
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头用户信息读取';//用于日志输出
+        req.name = '老友码头用户信息读取';//用于日志输出
         req.items = ["Id"];
 
         return req;
     }
 
-    //宝贝码头订单详情读取
+    //老友码头订单详情读取
     static bmOrderDetailRead(orderId){
         let operation = Operation.sharedInstance().bmOrderRead;
         let condition = "${Id} == '" + orderId + "'";
@@ -335,7 +335,7 @@ export default class RequestReadFactory {
             "Condition":condition,
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '宝贝码头订单详情读取';//用于日志输出
+        req.name = '老友码头订单详情读取';//用于日志输出
         // req.items = ["Id"];
 
         return req;
