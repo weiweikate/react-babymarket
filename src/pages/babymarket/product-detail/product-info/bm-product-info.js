@@ -106,7 +106,7 @@ export default class BMProductInfo extends Component {
 
     buyButton(){
         if (!window.inApp) {
-            return <span onClick={this.buyBtnClicked.bind(this)} className="bmpi-buy-button">立即购买</span>;
+            // return <span onClick={this.buyBtnClicked.bind(this)} className="bmpi-buy-button">立即购买</span>;
         }
     }
 
@@ -130,7 +130,7 @@ export default class BMProductInfo extends Component {
                 marginTop:10
             }}>
                 {this.importIcon()}
-                <div onTouchStart={this.onTitleTouchStart.bind(this)} onTouchEnd={this.onTitleTouchEnd.bind(this)} className="bmpi-title one-line-ellipsis">{this.props.product.ShowName}</div>
+                <div onTouchStart={this.onTitleTouchStart.bind(this)} onTouchEnd={this.onTitleTouchEnd.bind(this)} className="bmpi-title">{this.props.product.ShowName}</div>
             </div>
             <p className="bmpi-des">{this.props.product.Subtitle}</p>
             <div className="bmpi-price-container">
