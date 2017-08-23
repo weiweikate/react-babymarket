@@ -7,6 +7,7 @@ import './babymarket-wallet.css';
 import TCPullLoadComponet from '../../common/tc-pull-load-componet';
 import BabymarketWalletItem from './item/babymarket-wallet-item';
 import BabymarketWalletHeader from './header/babymarket-wallet-header';
+import BabymarketWalletHXHeader from './header/babymarket-wallet-hx-header';
 import TCNavigationBar from '../../common/nav/tc-navigation-bar';
 import BabymarketWalletItemSection from './item/babymarket-wallet-item-section';
 import ReactPullLoad,{ STATS } from 'react-pullload';
@@ -17,7 +18,9 @@ export default class BabymarketWallet extends TCPullLoadComponet{
         super(props);
         this.mainId = window.Storage.currentMemberId();
         this.state = {
-            balance:''
+            balance:'',
+            foodBalance:'',
+            isThirdBalance:false,
         };
         this.inheritStateFromSuper();
     }
@@ -29,8 +32,11 @@ export default class BabymarketWallet extends TCPullLoadComponet{
 
         let self = this;
         window.Storage.currentMemberInfoAsync((member) => {
+            console.log('member:' + JSON.stringify(member));
             self.setState({
-                balance:member.Balance
+                balance:member.Balance,
+                foodBalance:member.ThirdBalance,
+                isThirdBalance:member.IsThirdBalance == 'True',
             })
         });
     }
@@ -49,6 +55,12 @@ export default class BabymarketWallet extends TCPullLoadComponet{
     generateLoadMoreRequest(){
         let r = window.RequestReadFactory.bmBalanceLogMonthViewRead(this.mainId,this.state.index);
         return r;
+    }
+
+    heHeader(){
+        if (this.state.isThirdBalance) {
+            return <BabymarketWalletHXHeader balance={this.state.foodBalance}/>
+        }
     }
 
     /**
@@ -71,6 +83,7 @@ export default class BabymarketWallet extends TCPullLoadComponet{
         });
         return <ul className="bm-wallet-content">
             <BabymarketWalletHeader balance={this.state.balance}/>
+            { this.heHeader() }
             {arr}
         </ul>
     }
@@ -83,14 +96,6 @@ export default class BabymarketWallet extends TCPullLoadComponet{
                 title="我的资产"
                 rightText="优惠券"
             />
-            {/*<select style={{backgroundColor:'transparent',borderColor:'transparent',height:100,marginTop:50,}}>*/}
-                {/*<option value="volvo">Volvo</option>*/}
-                {/*<option value="saab">Saab</option>*/}
-                {/*<option value="opel">Opel</option>*/}
-                {/*<option value="saab">Saab</option>*/}
-                {/*<option value="opel">Opel</option>*/}
-                {/*<option value="audi">Audi</option>*/}
-            {/*</select>*/}
             {this.generatePullLoad()}
         </div>
     }

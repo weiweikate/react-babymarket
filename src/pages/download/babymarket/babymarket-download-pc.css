@@ -15,6 +15,11 @@
     width: 100%;
     background-color: white;
 }
+
+.bm-down-pc-topheader-right{
+    display: flex;
+    flex-direction: row;
+}
 /*老友码头字样*/
 .bm-down-pc-topheader-icon{
     display: flex;
@@ -29,6 +34,7 @@
     align-self: center;
     font-size: 24px;
     color: #626262;
+    padding-right: 20px;
 }
 /*除顶部以外的内容部分*/
 .bm-down-pc-content{

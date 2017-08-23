@@ -14,7 +14,10 @@ export default class BabymarketDownloadPC extends Component {
         return <div className="bm-down-pc">
             <div className="bm-down-pc-topheader">
                 <img className="bm-down-pc-topheader-icon" src="./img/babymarket-title-red.png"/>
-                <span className="bm-down-pc-topheader-title">下载</span>
+                <div className="bm-down-pc-topheader-right">
+                    <span className="bm-down-pc-topheader-title">下载</span>
+                    <a className="bm-down-pc-topheader-title" href="http://www.babymarkt.com.cn/admin.aspx">后台</a>
+                </div>
             </div>
             <div className="bm-down-pc-content">
                 <img className="bm-down-pc-screenshot" src="./img/babymarket-screenshot-pc.png"/>

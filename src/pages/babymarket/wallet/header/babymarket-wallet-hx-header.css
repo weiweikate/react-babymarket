@@ -1,0 +1,8 @@
+.bmw-hx-header-root{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #715329;
+    color: white;
+    padding-top: 14px;
+}

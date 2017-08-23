@@ -142,8 +142,8 @@ export default class BMProductInfo extends Component {
                 <span className="bmpi-country">{this.supplyText()}</span>
             </div>
             <div className="bmpi-express-base">
-                <span className="bmpi-location">配送费：{this.props.product.Warehouse} 到 {this.props.province}</span>
-                <span className="bmpi-express">{this.expressText()}</span>
+                <span className="bmpi-location">配送费：{this.props.product.Warehouse}到{this.props.province}</span>
+                <span className="bmpi-express">首重{this.expressText()}</span>
                 <span className="bmpi-tax">{this.rateText()}</span>
             </div>
         </div>
