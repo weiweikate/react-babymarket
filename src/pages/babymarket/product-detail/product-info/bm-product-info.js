@@ -29,11 +29,14 @@ export default class BMProductInfo extends Component {
 
     expressText(){
         let {express} = this.props;
-        if (express === '0' || express === undefined) {
+        if (this.props.product.FreePost == 'True') {
+            return '包邮';
+        }
+        if (express == 0 || express === undefined) {
             return '包邮';
         }
         else
-            return ''+this.props.express+'元';
+            return '首重'+this.props.express+'元';
     }
 
     supplyText(){
@@ -74,17 +77,19 @@ export default class BMProductInfo extends Component {
     }
 
     priceSubfix(){
-        return window.Storage.didLogin() ? <img src="./img/price-subfix.png" className="bmpi-price-subfix"/>: "";
+        // return window.Storage.didLogin() ? <img src="./img/price-subfix.png" className="bmpi-price-subfix"/>: "";
+        return <img src="./img/price-subfix.png" className="bmpi-price-subfix"/>;
     }
     price(){
         return this.props.product.SalePrice;
     }
 
     oldPrice(){
-        if (this.props.product.LYPrice === this.price() || this.props.product.LYPrice == 0) {
-            return "";
-        }
-        return window.Storage.didLogin() ? '￥' + this.props.product.LYPrice : "";
+        // if (this.props.product.LYPrice === this.price() || this.props.product.LYPrice == 0) {
+        //     return "";
+        // }
+        return '￥' + this.props.product.LYPrice;
+        // return window.Storage.didLogin() ? '￥' + this.props.product.LYPrice : "";
     }
 
     importIcon(){
@@ -143,7 +148,7 @@ export default class BMProductInfo extends Component {
             </div>
             <div className="bmpi-express-base">
                 <span className="bmpi-location">配送费：{this.props.product.Warehouse}到{this.props.province}</span>
-                <span className="bmpi-express">首重{this.expressText()}</span>
+                <span className="bmpi-express">{this.expressText()}</span>
                 <span className="bmpi-tax">{this.rateText()}</span>
             </div>
         </div>

@@ -21,7 +21,7 @@ export default class BabymarketProductDetail extends Component {
             images:[],
             nation:'',
             province:province,
-            express:'6',
+            express:'0',
             dynamic:{},
             dynamicCount:0,
         };
@@ -59,14 +59,14 @@ export default class BabymarketProductDetail extends Component {
                 let images = this.state.images;
                 images.unshift(window.Tool.imageURLForId(firstData.ImgId));
 
-                if (window.Storage.didLogin()) {
+                // if (window.Storage.didLogin()) {
                     let tempPrice = firstData.SalePrice;
                     firstData.SalePrice = firstData.LYPrice;
                     firstData.LYPrice = tempPrice;
-                }
-                else{
-                    firstData.LYPrice = "0";
-                }
+                // }
+                // else{
+                //     firstData.LYPrice = "0";
+                // }
 
                 self.setState({
                     product:firstData,

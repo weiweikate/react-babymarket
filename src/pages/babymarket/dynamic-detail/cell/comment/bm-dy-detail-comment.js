@@ -134,7 +134,7 @@ export default class BMDyDetailComment extends Component{
     }
 
     render(){
-        return <li className="bmdd-comment-root">
+        return <li className="bmdd-comment-root"  >
             <div className="bmdd-comment-auther">
 
                 <div onClick={this.avatarDidClicked.bind(this)} className="bmdd-comment-auther-left">
@@ -146,19 +146,19 @@ export default class BMDyDetailComment extends Component{
 
                     <div className="bmdd-comment-name-container">
                         <span className="bmdd-comment-name">{this.props.comment.NickName}</span>
-                        <span className="bmdd-comment-time">{this.createTime()}</span>
                     </div>
                 </div>
 
-                <div className="bmdd-comment-auther-right">
-                    <div onClick={this.dynamicDetailCommentLikeDidClicked.bind(this)} className="bmdd-comment-like-containner">
-                        <img src={this.likeIcon()} className="bmdd-comment-like-img"/>
-                        <span className="bmdd-comment-like-text">{this.state.likeCount <= 0 ? "赞":this.state.likeCount}</span>
-                    </div>
+                <span className="bmdd-comment-time">{this.createTime()}</span>
+                {/*<div className="bmdd-comment-auther-right">*/}
+                    {/*<div onClick={this.dynamicDetailCommentLikeDidClicked.bind(this)} className="bmdd-comment-like-containner">*/}
+                        {/*<img src={this.likeIcon()} className="bmdd-comment-like-img"/>*/}
+                        {/*<span className="bmdd-comment-like-text">{this.state.likeCount <= 0 ? "赞":this.state.likeCount}</span>*/}
+                    {/*</div>*/}
 
-                    <span onClick={this.dynamicDetailCommentReplyDidClicked.bind(this)} className="bmdd-comment-reply">回复</span>
+                    {/*<span onClick={this.dynamicDetailCommentReplyDidClicked.bind(this)} className="bmdd-comment-reply">回复</span>*/}
 
-                </div>
+                {/*</div>*/}
             </div>
             {this.replyElement()}
             <span className="bmdd-comment-content">{this.props.comment.Content}</span>
