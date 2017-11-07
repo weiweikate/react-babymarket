@@ -28,6 +28,17 @@ export default class RequestReadFactory {
     static login(username,pasword){
         let req = new RequestLogin(username,pasword);
         req.name = '登陆';//用于日志输出
+        req.preprocessCallback = (r) => {
+            let {Tool,Storage} = window;
+            let model = req.responseObject;
+            let session = model.Session;
+            let key = model.Person.Key;
+            let id = Tool.idFromDataKey(key);
+
+            Storage.setCurrentSession(session);
+            Storage.setDidLogin(true);
+            Storage.setCurrentMemberId(id);
+        }
         return req;
     }
 
@@ -243,6 +254,7 @@ export default class RequestReadFactory {
             "Operation":operation,
             "IsIncludeSubtables":true,
             "MaxCount":20,
+            'Order':"${CreateTime} DESC",
             "StartIndex":index
         };
         let req = new RequestRead(bodyParameters);
@@ -258,6 +270,7 @@ export default class RequestReadFactory {
             "Operation":operation,
             "IsIncludeSubtables":true,
             "MaxCount":20,
+            'Order':"${CreateTime} DESC",
             "StartIndex":index
         };
         let req = new RequestRead(bodyParameters);
@@ -340,6 +353,23 @@ export default class RequestReadFactory {
 
         return req;
     }
+
+    //第一级产品分类读取
+    static bmFirstProductsCategoryRead(){
+        let operation = Operation.sharedInstance().bmFirstProductsCategoryRead;
+        let bodyParameters =  {
+            "Operation":operation,
+            'Order':"${Order} ASC",
+            "IsShow":"true",
+            "Hierarchy":1,
+            "ShowInHomepage":1
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '第一级产品分类读取';//用于日志输出
+        req.items = ["Id",'Name','Order','MaxShow'];
+        return req;
+    }
+
 }
 
 

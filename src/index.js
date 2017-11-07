@@ -152,7 +152,16 @@ if (window.inApp) {
 else
 {
     console.info('not in App');
-    saveParams(urlSession,urlMemberId,(Tool.isValidStr(urlMemberId)));
-    initRoute();
+    if ('toolkit-sort-category-products' === action) {
+        let r = window.RequestReadFactory.login('marketapi','market909');
+        r.completeBlock = () => {
+            initRoute();
+        }
+        r.start();
+    }
+    else{
+        saveParams(urlSession,urlMemberId,(Tool.isValidStr(urlMemberId)));
+        initRoute();
+    }
 }
 

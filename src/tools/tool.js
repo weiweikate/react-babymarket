@@ -404,5 +404,19 @@ export default class Tool {
             return newHref;
         }
     }
+
+    static idFromDataKey(key) {
+        let com = key.split('.');
+        if (Tool.isValidArr(com)) {
+            for (let i = 0; i < com.length; i++) {
+                let userId = com[i];
+                if (Tool.isValidStr(userId)) {
+                    if (userId.length > 30 && userId.match("-") != null) {
+                        return userId;
+                    }
+                }
+            }
+        }
+    }
 }
 

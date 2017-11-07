@@ -34,6 +34,9 @@ export default class Network{
         //附件
         this.attatchmentURL = this.domain + 'Libra.Web.Businesses.Attachments.GetFile.aspx';
 
+        //图文详情页面
+        this.productWebUrl = this.domain + 'productwebdetail.aspx';
+
         this.statusExisted = 'Existed';
         this.statusNew = 'New';
         this.statusDelete = 'Deleted';

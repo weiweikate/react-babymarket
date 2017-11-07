@@ -79,7 +79,7 @@ export default class BabymarketReward extends TCPullLoadComponet {
         return <div className="bm-reward-root">
             <TCNavigationBar
                 onLeftClick={this.onLeftClick.bind(this)}
-                title={this.props.isSave ? "已省金额":"已收到奖励"}
+                title={this.props.isSave ? "已省金额":"收到奖励"}
             />
             {this.generatePullLoad()}
         </div>

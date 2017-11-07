@@ -9,7 +9,6 @@ import BMProductInfo from './product-info/bm-product-info';
 import BMProductSlogan from './product-slogan/bm-product-slogan';
 import BMProductDynamic from './product-dynamic/bm-product-dynamic';
 import BMDownloadBar from '../download-bar/bm-download-bar';
-
 export default class BabymarketProductDetail extends Component {
 
     constructor(props){
@@ -197,7 +196,8 @@ export default class BabymarketProductDetail extends Component {
      */
     generateDownloadBar(){
         if (!window.inApp) {
-            return <BMDownloadBar/>
+            // return <BMDownloadBar/>
+            return <a className='buy-bar-link' href={this.downloadLink()}><img className="buy-bar" src="./img/buy-bar.png"/></a>
         }
     }
 
@@ -208,6 +208,43 @@ export default class BabymarketProductDetail extends Component {
     generateDynamic(){
         if (window.Tool.isValidObject(this.state.dynamic)) {
             return <BMProductDynamic productId={this.state.product.Id} count={this.state.dynamicCount} dynamic={this.state.dynamic}/>
+        }
+    }
+
+    setIframeHeight(iframe) {
+        if (iframe) {
+            var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+            if (iframeWin.document.body) {
+                iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+            }
+        }
+    };
+
+    iframeOnLoad(){
+        let iframe = document.getElementById('external-frame');
+        this.setIframeHeight(iframe)
+    }
+
+    downloadLink(){
+        let fromId = window.Tool.getURLParameter('fromId');
+        let theId = window.Tool.getURLParameter('Id');
+        let productId = '';
+        let dynamicId = '';
+
+        if (window.action === 'product-detail') {
+            productId = theId;
+        }
+        else if (window.action === 'dynamic-detail') {
+            dynamicId = theId;
+        }
+        let link = window.Tool.mLinkDownloadURL(fromId,productId,dynamicId);
+        return link;
+    }
+
+    generateWebDetail(){
+        if (!window.inApp) {
+            let src = window.Network.sharedInstance().productWebUrl + '?Id=' + this.state.product.Id;
+            return <iframe className="web-detail" src={src} id="external-frame"></iframe>
         }
     }
 
@@ -222,6 +259,7 @@ export default class BabymarketProductDetail extends Component {
             />
             <BMProductSlogan product={this.state.product}/>
             {this.generateDynamic()}
+            {this.generateWebDetail()}
             {this.generateDownloadBar()}
         </div>
     }

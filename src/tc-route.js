@@ -26,6 +26,7 @@ import BabymarketReward from './pages/babymarket/reward/babymarket-reward';
 import BabymarketWallet from './pages/babymarket/wallet/babymarket-wallet';
 import BabymarketRefund from './pages/babymarket/refund/babymarket-refund';
 import BabymarketRefundFinish from './pages/babymarket/refund/babymarket-refund-finish';
+import BabymarketToolKitResortCategoryProducts from './pages/babymarket/toolkit/resort-categroy-products/resort-categroy-products';
 
 import BMAddAddress from './pages/babymarket/web-order/address/bm-add-address';
 import BMConfirmOrder from './pages/babymarket/web-order/confirm-order/bm-confirm-order';
@@ -132,6 +133,10 @@ export default function initRoute() {
      */
     else if ('router' === action) {
         ReactDOM.render(<WebOrderIndex/>, root);
+    }
+
+    else if ('toolkit-sort-category-products' === action) {
+        ReactDOM.render(<BabymarketToolKitResortCategoryProducts/>, root);
     }
 
     /**
