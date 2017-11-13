@@ -8,17 +8,11 @@ export default class BabymarketToolKitFilterItem extends Component {
     constructor(props){
         super();
         this.state = {
-            items:[],
         }
     }
 
     componentWillMount() {
         this.getItems();
-    }
-
-    selectOnChange(e){
-        let selet = e.currentTarget;
-        console.log('select value = ' + selet.value);
     }
 
     getItems(){
@@ -28,7 +22,12 @@ export default class BabymarketToolKitFilterItem extends Component {
         let items = [];
         if (window.Tool.isValidArr(this.props.dataArray)) {
             for (let item of this.props.dataArray) {
-                items.push(<option key={i} value={item}>{item.Name}</option>)
+                items.push(<option
+                    key={i}
+                    data-index={i}
+                    selected={this.props.currentIndex == i}
+                    value={item.Id}
+                >{item.Name}</option>)
                 i++;
             }
         }
@@ -40,7 +39,13 @@ export default class BabymarketToolKitFilterItem extends Component {
         return <div style={styles.root}>
             <span>{this.props.title}</span>
             <div>
-                <select onChange={this.selectOnChange.bind(this)} dir="rtl" style={{backgroundColor:'transparent',borderColor:'transparent',height:20,marginTop:0,align:'right'}}>
+                <select
+                    // value={parseInt(this.props.currentIndex)}
+                    id={this.props.elementId}
+                    onChange={this.props.onChange.bind(this)}
+                    dir="rtl"
+                    style={{backgroundColor:'transparent',borderColor:'transparent',height:20,marginTop:0,align:'right'}}
+                >
                     {this.getItems()}
                 </select>
             </div>

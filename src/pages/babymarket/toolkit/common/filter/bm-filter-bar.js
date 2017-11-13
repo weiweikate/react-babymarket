@@ -7,11 +7,32 @@ import BabymarketToolKitFilterItem from './bm-filter-item';
 
 export default class BabymarketToolKitFilter extends Component {
 
+    constructor(props){
+        super();
+
+    }
+
+    componentWillReceiveProps() {
+        console.log('arr count = ' +  this.props.firstCategorys.length)
+    }
+
     render(){
         return <div style={styles.root}>
-            <BabymarketToolKitFilterItem title='一级' dataArray={this.props.firstCategorys} />
-            <BabymarketToolKitFilterItem title='二级' dataArray={['奶粉','米粉']} />
-            <button onClick={this.props.submitButtonOnClick}>确定</button>
+            <BabymarketToolKitFilterItem
+                title='一级'
+                currentIndex={this.props.firstCurrentIndex}
+                onChange={this.props.firstCategoryOnChange}
+                dataArray={this.props.firstCategorys}
+                elementId='first select'
+            />
+            <BabymarketToolKitFilterItem
+                title='二级'
+                currentIndex={this.props.secondCurrentIndex}
+                onChange={this.props.secondCategoryOnChange}
+                dataArray={this.props.secondCategorys}
+                elementId='second select'
+            />
+            {/*<button onClick={this.props.submitButtonOnClick}>确定</button>*/}
         </div>
     }
 }

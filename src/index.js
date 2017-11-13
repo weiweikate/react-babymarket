@@ -31,7 +31,7 @@ window.TCBaseComponet = TCBaseComponet;
  * @type {boolean}
  */
 window.isProduction = false;
-window.isProduction = true;
+// window.isProduction = true;
 
 /*
  * 是否是https
@@ -153,7 +153,9 @@ else
 {
     console.info('not in App');
     if ('toolkit-sort-category-products' === action) {
-        let r = window.RequestReadFactory.login('marketapi','market909');
+        // let r = window.RequestReadFactory.login('marketapi','market909');
+        let r = window.RequestReadFactory.login('admin','babymarkt');
+        // let r = window.RequestReadFactory.login('18657188791','zhujianting082');
         r.completeBlock = () => {
             initRoute();
         }

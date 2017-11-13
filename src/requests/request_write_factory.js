@@ -24,7 +24,7 @@ export default class RequestWriteFactory {
             "Address":'杭照所',
         };
 
-        let req = new RequestWrite(status,'Location',params,null);
+        let req = new RequestWrite(status,'Location',params,null,null);
         req.name = '定位信息上传';
 
         return req;
@@ -47,7 +47,7 @@ export default class RequestWriteFactory {
             "SFJHCG":"True",
         };
 
-        let req = new RequestWrite(status,'JFJL',params,null);
+        let req = new RequestWrite(status,'JFJL',params,null,null);
         req.name = '积分上传';
 
         return req;
@@ -65,7 +65,7 @@ export default class RequestWriteFactory {
             "Code" : code,
         };
 
-        let req = new RequestWrite(status,'TagLock',params,null);
+        let req = new RequestWrite(status,'TagLock',params,null,null);
         req.name = '二维码上传';
 
         return req;
@@ -84,7 +84,7 @@ export default class RequestWriteFactory {
             'MemberId':window.Storage.currentMemberId()
         };
 
-        let req = new RequestWrite(status,'Favorite',params,null);
+        let req = new RequestWrite(status,'Favorite',params,null,null);
         req.name = '老友码头动态收藏';
 
         return req;
@@ -100,7 +100,7 @@ export default class RequestWriteFactory {
             'Id':favId,
         };
 
-        let req = new RequestWrite(status,'Favorite',params,null);
+        let req = new RequestWrite(status,'Favorite',params,null,null);
         req.name = '老友码头动态收藏 取消';
 
         return req;
@@ -117,7 +117,7 @@ export default class RequestWriteFactory {
             'MemberId':window.Storage.currentMemberId()
         };
 
-        let req = new RequestWrite(status,'Compliment',params,null);
+        let req = new RequestWrite(status,'Compliment',params,null,null);
         req.name = '老友码头动态点赞';
 
         return req;
@@ -134,7 +134,7 @@ export default class RequestWriteFactory {
             'Deleted':'True'
         };
 
-        let req = new RequestWrite(status,'Compliment',params,null);
+        let req = new RequestWrite(status,'Compliment',params,null,null);
         req.name = '老友码头动态点赞 取消';
 
         return req;
@@ -151,7 +151,7 @@ export default class RequestWriteFactory {
             'MemberId':window.Storage.currentMemberId()
         };
 
-        let req = new RequestWrite(status,'Compliment1',params,null);
+        let req = new RequestWrite(status,'Compliment1',params,null,null);
         req.name = '老友码头动态评论点赞';
 
         return req;
@@ -168,7 +168,7 @@ export default class RequestWriteFactory {
             'Deleted':'True'
         };
 
-        let req = new RequestWrite(status,'Compliment1',params,null);
+        let req = new RequestWrite(status,'Compliment1',params,null,null);
         req.name = '老友码头动态评论点赞 取消';
 
         return req;
@@ -187,7 +187,7 @@ export default class RequestWriteFactory {
             'ReasonId':reasonId,
         };
 
-        let req = new RequestWrite(status,'Refund',params,null);
+        let req = new RequestWrite(status,'Refund',params,null,null);
         req.name = '老友码头 退款';
 
         return req;
@@ -204,7 +204,7 @@ export default class RequestWriteFactory {
             'Deleted':'True'
         };
 
-        let req = new RequestWrite(status,'Refund',params,null);
+        let req = new RequestWrite(status,'Refund',params,null,null);
         req.name = '老友码头 取消退款';
 
         return req;
@@ -225,7 +225,7 @@ export default class RequestWriteFactory {
             "YQM":code,
         };
 
-        let req = new RequestWrite(status,'Member',params,null);
+        let req = new RequestWrite(status,'Member',params,null,null);
         req.name = '老友码头 创建用户';
 
         return req;
@@ -251,7 +251,7 @@ export default class RequestWriteFactory {
             params['PurchaseIDCard'] = cardId;
         }
 
-        let req = new RequestWrite(status,'Order',params,null);
+        let req = new RequestWrite(status,'Order',params,null,null);
         req.name = '老友码头 创建临时订单';
 
         return req;
@@ -267,7 +267,7 @@ export default class RequestWriteFactory {
             "Operation":operation,
         };
 
-        let req = new RequestWrite(status,'Order',params,null);
+        let req = new RequestWrite(status,'Order',params,null,null);
         req.name = '老友码头 修改并激活订单';
 
         return req;
@@ -288,8 +288,21 @@ export default class RequestWriteFactory {
             "Price":price,
         };
 
-        let req = new RequestWrite(status,'Order_Line',params,null);
+        let req = new RequestWrite(status,'Order_Line',params,null,null);
         req.name = '老友码头 增加订单明细';
+
+        return req;
+    }
+
+    //修改商品信息
+    static bmModifyProducts(body) {
+        let operation = Operation.sharedInstance().bmProductModify;
+        let status = Network.sharedInstance().statusExisted;
+
+        let params = body;
+
+        let req = new RequestWrite(status,'Product',params,operation,null);
+        req.name = '修改商品信息';
 
         return req;
     }

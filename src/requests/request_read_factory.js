@@ -360,15 +360,51 @@ export default class RequestReadFactory {
         let bodyParameters =  {
             "Operation":operation,
             'Order':"${Order} ASC",
-            "IsShow":"true",
+            // "IsShow":"true",
             "Hierarchy":1,
-            "ShowInHomepage":1
+            // "ShowInHomepage":1
         };
         let req = new RequestRead(bodyParameters);
-        req.name = '第一级产品分类读取';//用于日志输出
-        req.items = ["Id",'Name','Order','MaxShow'];
+        req.name = '第1级产品分类读取';//用于日志输出
+        req.items = ["Id",'Name'];
         return req;
     }
+
+    //第一级产品分类读取
+    static bmSecondProductsCategoryRead(pid){
+        let operation = Operation.sharedInstance().bmFirstProductsCategoryRead;
+        let bodyParameters =  {
+            'ParentId':pid,
+            "Operation":operation,
+            'Order':"${Order} ASC",
+            // "IsShow":"true",
+            // "Hierarchy":2,
+            // "ShowInHomepage":1
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '第2级产品分类读取';//用于日志输出
+        req.items = ["Id",'Name'];
+        return req;
+    }
+
+    //获取分类下的商品
+    static bmGetCategoryProducts(pid){
+        let operation = Operation.sharedInstance().bmProductReadOperation;
+        let bodyParameters =  {
+            // 'Product_CategoryId':pid,
+            // 'ProductCategoryInsideId':pid,
+            'Condition':"${ProductCategoryInsideId} == '"+pid+"' || ${Product_CategoryId} == '"+pid+"'",
+            "Operation":operation,
+            'Order':"${Order} ASC",
+            'IsIncludeLong':false,
+            'IsIncludeSubtables':false,
+        };
+        let req = new RequestRead(bodyParameters);
+        req.name = '获取分类下商品';//用于日志输出
+        req.items = ['Id','ShowName','ImgId','Order'];
+        return req;
+    }
+
 
 }
 
