@@ -13,7 +13,7 @@ import TCPullLoadComponet from '../pages/common/tc-pull-load-componet';
 import TCSeparationLine from '../pages/common/tc-separation-line';
 import TCNavigationBar from  '../pages/common/nav/tc-navigation-bar';
 
-let TCGlobal = {
+export default TCGlobal = {
     Tool:Tool,
     Storage:Storage,
     JSBridge:JSBridge,
@@ -44,4 +44,4 @@ let TCGlobal = {
     },
 };
 
-module.exports = TCGlobal;
+// module.exports = TCGlobal;
